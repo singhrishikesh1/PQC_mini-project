@@ -74,7 +74,7 @@ function LoginPage() {
 function BadgeWelcome() { return <span className="welcome-eyebrow"><span /> YOUR CAMPUS, CONNECTED</span> }
 
 function AppShell() {
-  const { role, setRole, data, theme, toggleTheme, backendStatus, syncWithBackend, toast } = useLibrary()
+  const { role, setRole, data, theme, toggleTheme } = useLibrary()
   const [collapsed, setCollapsed] = useState(false), [mobileOpen, setMobileOpen] = useState(false), [profileOpen, setProfileOpen] = useState(false), [search, setSearch] = useState(''), [mobileSearch, setMobileSearch] = useState(false)
   const location = useLocation(), navigate = useNavigate()
   useEffect(() => {
@@ -105,20 +105,6 @@ function AppShell() {
     <div className="main-column">
       <header className="topbar"><div className="topbar-left"><IconButton label="Open navigation" className="mobile-menu" onClick={() => setMobileOpen(true)}><Menu size={20} /></IconButton><IconButton label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} className="collapse-button" onClick={() => setCollapsed(!collapsed)}>{collapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}</IconButton><span className="crumb-root">Workspace</span><span className="crumb-sep">/</span><span className="crumb-current">{pageTitle}</span></div>
         <div className="topbar-right"><form className={`global-search ${mobileSearch ? 'mobile-active' : ''}`} onClick={() => { if (window.innerWidth <= 680) setMobileSearch(true) }} onSubmit={e => { e.preventDefault(); navigate(`/catalog?search=${encodeURIComponent(search)}`); setMobileSearch(false) }}><Search size={16} /><input aria-label="Search the library" placeholder="Search books, authors..." value={search} onChange={e => setSearch(e.target.value)} /><kbd>⌘ K</kbd></form>
-          <button
-            type="button"
-            className={`backend-pill ${backendStatus.connected ? 'is-connected' : 'is-fallback'}`}
-            onClick={async () => {
-              toast(`Syncing with ${backendStatus.engine}...`, 'info')
-              await syncWithBackend()
-              toast('Backend synchronized successfully!', 'success')
-            }}
-            title={`${backendStatus.connected ? 'Connected to REST API & ' + backendStatus.engine : 'Running in Local Persistent Cache'}. Click to sync.`}
-          >
-            <span className="backend-pulse" />
-            <span className="backend-label">{backendStatus.connected ? 'PostgreSQL Active' : 'Offline Cache'}</span>
-            {backendStatus.pingMs !== undefined && <span className="backend-latency">{backendStatus.pingMs}ms</span>}
-          </button>
           <IconButton label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} onClick={toggleTheme}>{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</IconButton>
           <IconButton label={`Notifications${unread ? `, ${unread} unread` : ''}`} className="top-notification" onClick={() => navigate('/notifications')}><Bell size={18} />{unread > 0 && <i />}</IconButton><div className="profile-wrap"><button className="profile-trigger" onClick={() => setProfileOpen(!profileOpen)}><span className="avatar">{userInitials}</span><ChevronDown size={14} /></button>{profileOpen && <div className="profile-menu"><div className="profile-menu-label">SWITCH PORTAL</div><button onClick={() => { setRole(role === 'librarian' ? 'student' : 'librarian'); setProfileOpen(false); navigate(role === 'librarian' ? '/student' : '/dashboard') }}><span className="portal-icon">{role === 'librarian' ? <GraduationCap size={16} /> : <ShieldCheck size={16} />}</span><span><strong>Switch to {role === 'librarian' ? 'student' : 'librarian'}</strong><small>Switch to {role === 'librarian' ? 'student' : 'librarian'} portal</small></span></button><button onClick={() => { toggleTheme(); setProfileOpen(false) }}><span className="portal-icon">{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}</span><span><strong>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</strong><small>Switch appearance</small></span></button><button onClick={() => { setRole(null); setProfileOpen(false); navigate('/') }}><LogOut size={16} /> Sign out</button></div>}</div>
         </div></header>
