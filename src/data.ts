@@ -77,24 +77,159 @@ const books: Book[] = bookSpecs.slice(0, 50).map(([title, author, categoryId, de
   id: `book-${String(i + 1).padStart(2, '0')}`, title, author, categoryId, description,
   isbn: `978-${(1000000000 + i * 37429).toString().slice(0, 10)}`, publisher: publishers[i % publishers.length],
   publicationYear: 2001 + (i * 7) % 24, coverUrl: '', language: languages[i % languages.length], edition: `${1 + (i % 3)}${i % 3 === 0 ? 'st' : i % 3 === 1 ? 'nd' : 'rd'} edition`,
-  pageCount: 180 + (i * 37) % 480, shelfLocation: `Floor ${1 + (i % 3)} · ${String.fromCharCode(65 + (i % 8))}${10 + (i * 3) % 30}`,
+  pageCount: 220 + (i * 17) % 360, shelfLocation: `Floor ${1 + (i % 3)} · ${['A', 'B', 'C', 'D'][i % 4]}${10 + (i % 20)}`,
   callNumber: `${['QA', 'HM', 'PR', 'BF', 'HG'][i % 5]} ${100 + i}.${i % 10}`, createdAt: addDays(new Date(), -(i * 9) % 400), archivedAt: null,
 }))
 
-const memberNames = [
-  'Alex Morgan', 'Priya Sharma', 'Jordan Lee', 'Aisha Patel', 'Noah Williams', 'Mei Chen', 'Sam Rivera', 'Fatima Khan',
-  'Ethan Brooks', 'Ananya Rao', 'Oliver Grant', 'Zara Ahmed', 'Theo Martin', 'Maya Iyer', 'Lucas Bennett', 'Nina Das',
-  'Arjun Mehta', 'Sofia Clarke', 'Ishaan Kapoor', 'Grace Kim', 'Rohan Shah', 'Emma Wilson', 'Kabir Sethi', 'Leah Thompson', 'Devika Nair',
+export const rawStudentList = [
+  { rollNo: '25CO56', regNo: '25ACOE1101051', name: 'Dhiraj Sadashiv Mote' },
+  { rollNo: '25CO57', regNo: '25ACOE1101176', name: 'Durga Ajay Bhandari' },
+  { rollNo: '25CO58', regNo: '25ACOE1101014', name: 'Suzan Faiyaz Sayyed' },
+  { rollNo: '25CO59', regNo: '25ACOE1101015', name: 'Gaurav Jitendra Gangbhoj' },
+  { rollNo: '25CO60', regNo: '25ACOE1101055', name: 'Harsh Anandilal Kankani' },
+  { rollNo: '25CO61', regNo: '25ACOE1101009', name: 'Harshal Sanjaykumar Pandit' },
+  { rollNo: '25CO62', regNo: '25ACOE1101201', name: 'Harshwardhan Bhuleshwar Hingmire' },
+  { rollNo: '25CO63', regNo: '25ACOE1101160', name: 'Himanshu Sanjay Patil' },
+  { rollNo: '25CO64', regNo: '25ACOE1101100', name: 'Hiya Shaikh' },
+  { rollNo: '25CO65', regNo: '25ACOE1101111', name: 'Isha Indrajit Malapure' },
+  { rollNo: '25CO66', regNo: '25ACOE1101067', name: 'Jay Hemraj Nandardhane' },
+  { rollNo: '25CO67', regNo: '25ACOE1101143', name: 'Jaydeep Vinod Sarade' },
+  { rollNo: '25CO68', regNo: '25ACOE1101010', name: 'Jeet Sadanand Pandey' },
+  { rollNo: '25CO69', regNo: '25ACOE1101139', name: 'Kajal Bagish Mishra' },
+  { rollNo: '25CO70', regNo: '25ACOE1101024', name: 'Kanvesh Umeshrao Raut' },
+  { rollNo: '25CO71', regNo: '25ACOE1101105', name: 'Karan Sadashivrao Ambhure' },
+  { rollNo: '25CO72', regNo: '25ACOE1121269', name: 'Kartik Suryakant Wandhare' },
+  { rollNo: '25CO73', regNo: '25ACOE1121210', name: 'Kaustubh Balaji Biradar' },
+  { rollNo: '25CO74', regNo: '25ACOE1301197', name: 'Keshav Rajeshwar Toshniwal' },
+  { rollNo: '25CO75', regNo: '25ACOE1121262', name: 'Ketan Dinesh Sonawane' },
+  { rollNo: '25CO76', regNo: '25ACOE1121257', name: 'Khushal Anandrao Buddhewar' },
+  { rollNo: '25CO77', regNo: '25ACOE1101066', name: 'Khushi Rajeev Maurya' },
+  { rollNo: '25CO78', regNo: '25ACOE1301153', name: 'Krishna Rajesh Kumar Mishra' },
+  { rollNo: '25CO79', regNo: '25ACOE1101044', name: 'Krishna Jitendra Yadav' },
+  { rollNo: '25CO80', regNo: '25ACOE1101121', name: 'Krishna Gurucharansingh Yadu' },
+  { rollNo: '25CO81', regNo: '25ACOE1101048', name: 'Krishna Laxman Chinchalpalle' },
+  { rollNo: '25CO82', regNo: '25ACOE1101049', name: 'Kunal Manohar Salunke' },
+  { rollNo: '25CO83', regNo: '25ACOE1101011', name: 'Kundan Sandeep Pandey' },
+  { rollNo: '25CO84', regNo: '25ACOE1101004', name: 'Laxmi Anil Yadav' },
+  { rollNo: '25CO85', regNo: '25ACOE1101134', name: 'Mayuri Anil Baviskar' },
+  { rollNo: '25CO86', regNo: '25ACOE1101129', name: 'Madhu Harishankar Jha' },
+  { rollNo: '25CO87', regNo: '25ACOE1101159', name: 'Manas Ramesh Latwal' },
+  { rollNo: '25CO88', regNo: '25ACOE1121238', name: 'Manjit Lalan Singh' },
+  { rollNo: '25CO89', regNo: '25ACOE1101077', name: 'Mayur Kailas Amrutkar' },
+  { rollNo: '25CO90', regNo: '25ACOE1101016', name: 'Mehak Nandkishore Choudhari' },
+  { rollNo: '25CO91', regNo: '25ACOE1101053', name: 'Mohamad Salman' },
+  { rollNo: '25CO92', regNo: '25ACOE1101082', name: 'Mohammad Muzzammil Abdul Salim Sheikh' },
+  { rollNo: '25CO93', regNo: '25ACOE1121233', name: 'Mrunalini Anil Gaikwad' },
+  { rollNo: '25CO94', regNo: '25ACOE1101146', name: 'Nabiya Kainaat Shaikh Yusuf Shahzad Shaikh' },
+  { rollNo: '25CO95', regNo: '25ACOE1121218', name: 'Nagesh Ananda Sapkal' },
+  { rollNo: '25CO96', regNo: '25ACOE1101178', name: 'Nakul Dagdu Thale' },
+  { rollNo: '25CO97', regNo: '25ACOE1101169', name: 'Naman Ramesh Jain' },
+  { rollNo: '25CO98', regNo: '25ACOE1101162', name: 'Namish Rajesh Dhawale' },
+  { rollNo: '25CO99', regNo: '25ACOE1121219', name: 'Namrata Narendra Ghulaxe' },
+  { rollNo: '25CO100', regNo: '25ACOE1101228', name: 'Nandini Adhikar Patil' },
+  { rollNo: '25CO101', regNo: '25ACOE1121252', name: 'Niraj Subhash Puri' },
+  { rollNo: '25CO102', regNo: '25ACOE1101168', name: 'Niranjan Shivaji Chaudhari' },
+  { rollNo: '25CO103', regNo: '25ACOE1101052', name: 'Nirmal Patil' },
+  { rollNo: '25CO104', regNo: '25ACOE1101088', name: 'Nishita Vinod Milmile' },
+  { rollNo: '25CO105', regNo: '25ACOE1101056', name: 'Noorulain Rizwan Bedrekar' },
+  { rollNo: '25CO106', regNo: '25ACOE1301059', name: 'Om Arjun Gaikwad' },
+  { rollNo: '25CO107', regNo: '25ACOE1112125', name: 'Om Pramod Godse' },
+  { rollNo: '25CO108', regNo: '25ACOE1121215', name: 'Om Vitthal Kundgir' },
 ]
-const members: Member[] = memberNames.map((name, i) => ({
-  id: `member-${String(i + 1).padStart(2, '0')}`, name, email: `${name.toLowerCase().replaceAll(' ', '.')}@example.com`,
-  phone: `+91 98${String(10000000 + i * 48219).slice(0, 8)}`, membershipType: (['Student', 'Faculty', 'Staff'][i % 3]) as Member['membershipType'],
-  membershipStatus: i === 22 ? 'Suspended' : 'Active', registrationDate: addDays(new Date(), -500 + i * 14), expiryDate: addDays(new Date(), i === 23 ? -12 : 365 + i * 8),
-}))
+
+export const facultyMembers: Member[] = [
+  {
+    id: 'GH-FAC-01',
+    rollNo: 'FAC-01',
+    registrationNumber: 'GH-FAC-01',
+    name: 'Dr. Sarita Patil',
+    email: 'sarita.patil@ghrcem.raisoni.net',
+    phone: '+91 98221 45012',
+    membershipType: 'Faculty',
+    membershipStatus: 'Active',
+    registrationDate: '2021-06-15',
+    expiryDate: '2030-12-31',
+    department: 'Computer Engineering',
+  },
+  {
+    id: 'GH-FAC-02',
+    rollNo: 'FAC-02',
+    registrationNumber: 'GH-FAC-02',
+    name: 'Narsing Kadam',
+    email: 'narsing.kadam@ghrcem.raisoni.net',
+    phone: '+91 98224 78103',
+    membershipType: 'Faculty',
+    membershipStatus: 'Active',
+    registrationDate: '2022-07-20',
+    expiryDate: '2030-12-31',
+    department: 'Computer Engineering',
+  },
+  {
+    id: 'GH-FAC-03',
+    rollNo: 'FAC-03',
+    registrationNumber: 'GH-FAC-03',
+    name: 'Sadashiv Badger',
+    email: 'sadashiv.badger@ghrcem.raisoni.net',
+    phone: '+91 98230 19342',
+    membershipType: 'Faculty',
+    membershipStatus: 'Active',
+    registrationDate: '2020-01-10',
+    expiryDate: '2030-12-31',
+    department: 'Computer Engineering',
+  },
+  {
+    id: 'GH-FAC-04',
+    rollNo: 'FAC-04',
+    registrationNumber: 'GH-FAC-04',
+    name: 'Prajakta Borude',
+    email: 'prajakta.borude@ghrcem.raisoni.net',
+    phone: '+91 98235 67291',
+    membershipType: 'Faculty',
+    membershipStatus: 'Active',
+    registrationDate: '2023-08-05',
+    expiryDate: '2030-12-31',
+    department: 'Computer Engineering',
+  },
+]
+
+const studentMembers: Member[] = rawStudentList.map((s, i) => {
+  if (s.rollNo === '25CO64') {
+    return {
+      id: '25CO64',
+      rollNo: '25CO64',
+      registrationNumber: '25ACOE1101100',
+      name: 'Hiya Shaikh',
+      email: 'hiyashaikh3@gmail.com',
+      phone: '+91 93097***78',
+      membershipType: 'Student' as const,
+      membershipStatus: 'Active' as const,
+      registrationDate: '2025-09-10',
+      expiryDate: '2029-05-31',
+      department: 'Computer Engineering',
+    }
+  }
+  const emailPrefix = s.name.toLowerCase().replace(/[^a-z0-9]+/g, '.').replace(/^\.+|\.+$/g, '')
+  return {
+    id: s.rollNo,
+    rollNo: s.rollNo,
+    registrationNumber: s.regNo,
+    name: s.name,
+    email: `${emailPrefix}@ghrcem.raisoni.net`,
+    phone: `+91 98${String(10000000 + i * 48219).slice(0, 8)}`,
+    membershipType: 'Student' as const,
+    membershipStatus: i === 25 ? 'Suspended' : 'Active',
+    registrationDate: '2025-08-16',
+    expiryDate: '2029-05-31',
+    department: 'Computer Engineering',
+  }
+})
+
+export const allMembers: Member[] = [...studentMembers, ...facultyMembers]
 
 export function createSeedData(): LibraryData {
+  const members = allMembers
   const copies: BookCopy[] = books.flatMap((book, i) => Array.from({ length: i < 30 ? 2 : 1 }, (_, copyIndex) => ({
-    id: `copy-${book.id}-${copyIndex + 1}`, bookId: book.id, accessionNumber: `NS-${String(i + 1).padStart(3, '0')}-${copyIndex + 1}`,
+    id: `copy-${book.id}-${copyIndex + 1}`, bookId: book.id, accessionNumber: `GH-${String(i + 1).padStart(3, '0')}-${copyIndex + 1}`,
     status: 'available' as const, shelfLocation: book.shelfLocation,
   })))
   const borrowedBookIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 30, 31, 32, 33]
@@ -103,7 +238,8 @@ export function createSeedData(): LibraryData {
     const copy = copies.find(c => c.bookId === books[bookIndex].id && c.status === 'available')!
     copy.status = 'loaned'
     const issueDate = addDays(new Date(), -18 + i)
-    return { id: `loan-${String(i + 1).padStart(3, '0')}`, memberId: members[(i * 3) % members.length].id, copyId: copy.id,
+    const borrowerId = i === 0 ? '25CO64' : members[(i * 3) % members.length].id
+    return { id: `loan-${String(i + 1).padStart(3, '0')}`, memberId: borrowerId, copyId: copy.id,
       issueDate, dueDate: addDays(new Date(), overdueOffsets[i]), returnDate: null, renewalCount: i % 3 === 0 ? 1 : 0, status: 'active' as const }
   })
   const returnedLoans = Array.from({ length: 6 }, (_, i) => ({
@@ -115,9 +251,9 @@ export function createSeedData(): LibraryData {
   const heldCopy = copies.find(c => c.bookId === books[34].id)!
   heldCopy.status = 'reserved'
   const reservations: Reservation[] = [
-    ['member-16', 'book-31', 'pending'], ['member-17', 'book-31', 'pending'], ['member-18', 'book-32', 'pending'],
-    ['member-19', 'book-33', 'pending'], ['member-20', 'book-34', 'pending'], ['member-21', 'book-35', 'ready'],
-    ['member-22', 'book-36', 'pending'], ['member-23', 'book-37', 'pending'],
+    [members[1].id, 'book-31', 'pending'], [members[2].id, 'book-31', 'pending'], [members[3].id, 'book-32', 'pending'],
+    [members[4].id, 'book-33', 'pending'], [members[5].id, 'book-34', 'pending'], [members[6].id, 'book-35', 'ready'],
+    [members[7].id, 'book-36', 'pending'], [members[8].id, 'book-37', 'pending'],
   ].map(([memberId, bookId, status], i) => ({ id: `reservation-${String(i + 1).padStart(3, '0')}`, memberId, bookId,
     reservationDate: addDays(new Date(), -12 + i), queuePosition: i + 1, status: status as LibraryData['reservations'][number]['status'] }))
   // Match the ready reservation to a reserved copy of its title.
@@ -133,31 +269,42 @@ export function createSeedData(): LibraryData {
       createdAt: loan.returnDate ?? today() }
   })
   const notificationSeed: [string | null, string, string, Notification['type']][] = [
-    ['member-01', 'Your book is due soon', 'The Pragmatic Programmer is due in 3 days.', 'due'],
-    ['member-02', 'Overdue book reminder', 'Please return Clean Code at your earliest convenience.', 'overdue'],
-    ['member-03', 'Reservation ready', 'The Little Prince is ready for collection at the front desk.', 'reservation'],
-    ['member-04', 'Book returned', 'Your return was checked in successfully.', 'returned'],
+    ['25CO64', 'Your book is due soon', 'The Pragmatic Programmer is due in 3 days.', 'due'],
+    [members[1].id, 'Overdue book reminder', 'Please return Clean Code at your earliest convenience.', 'overdue'],
+    [members[2].id, 'Reservation ready', 'The Little Prince is ready for collection at the central library desk.', 'reservation'],
+    [members[3].id, 'Book returned', 'Your return was checked in successfully.', 'returned'],
     [null, 'Library hours this week', 'The library is open from 8:00 AM to 8:00 PM on weekdays.', 'announcement'],
-    ['member-06', 'Your book is due tomorrow', 'A Brief History of Time is due tomorrow.', 'due'],
-    ['member-07', 'Reservation update', 'You are next in the queue for The Gene.', 'reservation'],
-    ['member-01', 'New arrivals are here', 'Explore this month’s new additions to the catalog.', 'announcement'],
-    ['member-09', 'Overdue book reminder', 'Please return your borrowed title to avoid additional demo fines.', 'overdue'],
-    ['member-10', 'Book returned', 'Your recent return has been recorded.', 'returned'],
+    [members[4].id, 'Your book is due tomorrow', 'A Brief History of Time is due tomorrow.', 'due'],
+    [members[5].id, 'Reservation update', 'You are next in the queue for The Gene.', 'reservation'],
+    ['25CO64', 'New arrivals are here', 'Explore this month’s new additions to the GH Raisoni collection.', 'announcement'],
+    [members[6].id, 'Overdue book reminder', 'Please return your borrowed title to avoid additional overdue fines.', 'overdue'],
+    [members[7].id, 'Book returned', 'Your recent return has been recorded.', 'returned'],
   ]
   const notifications: Notification[] = notificationSeed.map(([memberId, title, message, type], i) => ({ id: `notification-${i + 1}`, memberId, title, message,
     type, createdAt: addDays(new Date(), -i), readAt: i > 4 ? addDays(new Date(), -i) : null }))
   const activity = [
-    { id: 'activity-new-title', actorId: 'librarian-demo', action: 'added a new title', entityType: 'book', entityId: books[42].id, timestamp: new Date(Date.now() - 25 * 3_600_000).toISOString() },
-    { id: 'activity-new-member', actorId: 'librarian-demo', action: 'registered as a member', entityType: 'member', entityId: members[24].id, timestamp: new Date(Date.now() - 35 * 3_600_000).toISOString() },
-    ...activeLoans.slice(0, 2).map((loan, i) => ({ id: `activity-${i + 1}`, actorId: 'librarian-demo', action: 'issued a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - i * 3_600_000).toISOString() })),
-    ...returnedLoans.slice(0, 1).map((loan, i) => ({ id: `activity-return-${i}`, actorId: 'librarian-demo', action: 'returned a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 4 * 3_600_000).toISOString() })),
-    ...activeLoans.slice(2, 3).map((loan, i) => ({ id: `activity-later-${i}`, actorId: 'librarian-demo', action: 'issued a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 48 * 3_600_000).toISOString() })),
-    ...returnedLoans.slice(1, 2).map((loan, i) => ({ id: `activity-return-later-${i}`, actorId: 'librarian-demo', action: 'returned a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 55 * 3_600_000).toISOString() })),
+    { id: 'activity-new-title', actorId: 'mirkword', action: 'added a new title', entityType: 'book', entityId: books[42].id, timestamp: new Date(Date.now() - 25 * 3_600_000).toISOString() },
+    { id: 'activity-new-member', actorId: 'mirkword', action: 'registered as a member', entityType: 'member', entityId: members[0].id, timestamp: new Date(Date.now() - 35 * 3_600_000).toISOString() },
+    ...activeLoans.slice(0, 2).map((loan, i) => ({ id: `activity-${i + 1}`, actorId: 'mirkword', action: 'issued a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - i * 3_600_000).toISOString() })),
+    ...returnedLoans.slice(0, 1).map((loan, i) => ({ id: `activity-return-${i}`, actorId: 'mirkword', action: 'returned a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 4 * 3_600_000).toISOString() })),
+    ...activeLoans.slice(2, 3).map((loan, i) => ({ id: `activity-later-${i}`, actorId: 'mirkword', action: 'issued a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 48 * 3_600_000).toISOString() })),
+    ...returnedLoans.slice(1, 2).map((loan, i) => ({ id: `activity-return-later-${i}`, actorId: 'mirkword', action: 'returned a book', entityType: 'loan', entityId: loan.id, timestamp: new Date(Date.now() - 55 * 3_600_000).toISOString() })),
   ].sort((a, b) => b.timestamp.localeCompare(a.timestamp))
   return {
     categories, books, copies, members, loans, reservations, fines, notifications, activity,
-    settings: { libraryName: 'Northstar Library', address: '18 College Road, Bengaluru 560001', contactEmail: 'hello@northstarlibrary.example.com', phone: '+91 80 4567 2100', hours: 'Mon–Fri, 8:00 AM–8:00 PM · Sat, 9:00 AM–5:00 PM', loanDurationDays: 21, maxActiveLoans: 5, maxRenewals: 2, finePerDay: 5, reservationHoldDays: 3 },
+    settings: {
+      libraryName: 'GH Raisoni College of Engineering and Management',
+      address: 'Wagholi, Pune',
+      contactEmail: 'ghrcemp@gmail.com',
+      phone: '+91 20 6752 4800',
+      hours: 'Mon–Fri, 8:00 AM–8:00 PM · Sat, 9:00 AM–5:00 PM',
+      loanDurationDays: 21,
+      maxActiveLoans: 5,
+      maxRenewals: 2,
+      finePerDay: 5,
+      reservationHoldDays: 3,
+    },
   }
 }
 
-export const demoMembers = members
+export const libraryMembers = allMembers

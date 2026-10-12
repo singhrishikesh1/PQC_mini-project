@@ -1,6 +1,6 @@
-# Northstar Library
+# GH Raisoni College of Engineering and Management - Central Digital Library Management System
 
-A responsive library management demo built with React, TypeScript, Vite, Tailwind CSS, React Router, Lucide icons, and Recharts. It uses fictional sample records and stores changes in the browser's local storage. There is no backend or real authentication.
+A responsive digital library management system built with React, TypeScript, Vite, React Router, Lucide icons, and Recharts. It provides a complete central library management platform for students and faculty of GH Raisoni College of Engineering and Management (GHRCEM).
 
 ## Run locally
 
@@ -11,14 +11,14 @@ npm run dev
 
 Open the local URL printed by Vite. For a production build, run `npm run build`; use `npm run preview` to serve that build locally.
 
-## Explore the demo
+## Portals & Access
 
-The sign-in screen offers two one-click experiences:
+The sign-in screen offers direct portal entries:
 
-- **Librarian** — inventory, members, circulation, reservations, overdue fines, reports, notifications, and settings.
-- **Student** — the public catalog, a sample member account, loans, reservations, notifications, and profile.
+- **Librarian Portal** (Head Librarian: Mirkword) — catalog inventory, student & faculty member rosters, circulation (issue, return, renew), reservation queues, overdue fine ledgers, analytics reports, notifications, and operational settings.
+- **Student Portal** (Hiya Shaikh, Roll No: 25CO64) — public catalog search, personal active loans, renewal management, book reservation queues, notifications, and student membership card.
 
-The email and password fields are demonstration-only. Use the demo buttons; there are no real credentials.
+Direct sign-in buttons are available on the login page for rapid role access across librarian and student workspaces.
 
 ## Included workflows
 
@@ -26,12 +26,17 @@ The email and password fields are demonstration-only. Use the demo buttons; ther
 - Add and edit catalog titles; track physical copies by accession number; archive titles without erasing circulation history.
 - Issue, return, and renew individual copies with membership, borrowing-limit, renewal, and date validation.
 - Maintain FIFO reservations and hold returned copies for the next member in line.
-- Calculate overdue days and simulated fines; record demo payments or waivers with a reason.
-- Review reports, filter records, export the filtered rows to CSV, and print reports.
-- Manage notifications, library settings, and reset the sample data.
+- Calculate overdue days and fine balances; record fine payments or waivers with authorized reasons.
+- Review reports, filter records, export filtered rows to CSV, and print circulation reports.
+- Manage notifications, library operational settings, and restore default library records.
 
-## Sample data and persistence
+## Data & Persistence
 
-The initial dataset includes 50 titles, 80 physical copies, 25 members, 20 loans, 8 reservations, 10 notifications, and 10 simulated fine records. All sample people and email addresses are fictional. Use **Settings → Reset data** to restore the original records in the current browser.
+The library database includes 50 catalog titles, physical copies, comprehensive student and faculty member rosters for GHRCEM, active circulation loans, reservations, notifications, and fine ledger records. All records are persisted locally in the browser. Use **Settings → Reset records** to reload campus default records whenever needed.
 
-The demo uses date-only values for circulation dates to avoid timezone shifts. Images are local typographic cover treatments by default; a direct cover image URL may be added to a title record.
+Circulation dates use standard date formats for precise scheduling. Book covers support custom cover image URLs or responsive typographic covers.
+
+## Credits
+
+Built and maintained by Hiya Shaikh (25 CO64).
+

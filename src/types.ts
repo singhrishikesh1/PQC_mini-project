@@ -16,6 +16,7 @@ export interface BookCopy { id: string; bookId: string; accessionNumber: string;
 export interface Member {
   id: string; name: string; email: string; phone: string; membershipType: MembershipType
   membershipStatus: MembershipStatus; registrationDate: string; expiryDate: string
+  rollNo?: string; registrationNumber?: string; department?: string
 }
 export interface Loan {
   id: string; memberId: string; copyId: string; issueDate: string; dueDate: string; returnDate: string | null

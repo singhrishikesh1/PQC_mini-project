@@ -18,7 +18,21 @@ type Store = {
   readNotification: (id: string) => void; readAllNotifications: () => void
   updateSettings: (patch: Partial<LibraryData['settings']>) => void; resetData: () => void
 }
-const STORAGE_KEY = 'northstar-library-demo-v1'
+const STORAGE_KEY = 'ghrcem-library-system-v6'
+const ROLE_KEY = 'ghrcem-library-role-v5'
+const DEFAULT_STUDENT: Member = {
+  id: '25CO64',
+  rollNo: '25CO64',
+  registrationNumber: '25ACOE1101100',
+  name: 'Hiya Shaikh',
+  email: 'hiyashaikh3@gmail.com',
+  phone: '+91 93097***78',
+  membershipType: 'Student',
+  membershipStatus: 'Active',
+  registrationDate: '2025-09-10',
+  expiryDate: '2029-05-31',
+  department: 'Computer Engineering',
+}
 const StoreContext = createContext<Store | null>(null)
 const freshId = (prefix: string) => `${prefix}-${Math.random().toString(36).slice(2, 8)}-${Date.now().toString(36)}`
 const validateMember = (data: LibraryData, memberId: string) => {
@@ -31,10 +45,42 @@ const validateMember = (data: LibraryData, memberId: string) => {
 
 export function LibraryProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<LibraryData>(() => {
-    try { const saved = localStorage.getItem(STORAGE_KEY); return saved ? JSON.parse(saved) as LibraryData : createSeedData() }
-    catch { return createSeedData() }
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved) as LibraryData
+        if (parsed.members && parsed.members.length >= 50) {
+          const idx = parsed.members.findIndex(mem => mem.id === '25CO64')
+          if (idx !== -1) {
+            parsed.members[idx] = { ...parsed.members[idx], ...DEFAULT_STUDENT }
+          } else {
+            parsed.members.unshift(DEFAULT_STUDENT)
+          }
+          return parsed
+        }
+        return createSeedData()
+      }
+      return createSeedData()
+    } catch {
+      return createSeedData()
+    }
   })
-  const [role, setRole] = useState<Role | null>(null)
+  const [role, setRoleState] = useState<Role | null>(() => {
+    try {
+      const savedRole = localStorage.getItem(ROLE_KEY)
+      if (savedRole === 'librarian' || savedRole === 'student') return savedRole
+      return 'student'
+    } catch {
+      return 'student'
+    }
+  })
+  const setRole = (newRole: Role | null) => {
+    setRoleState(newRole)
+    try {
+      if (newRole) localStorage.setItem(ROLE_KEY, newRole)
+      else localStorage.removeItem(ROLE_KEY)
+    } catch {}
+  }
   const [toasts, setToasts] = useState<Toast[]>([])
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) }, [data])
   const toast = (message: string, tone: Toast['tone'] = 'success') => {
@@ -43,7 +89,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
     window.setTimeout(() => setToasts(current => current.filter(t => t.id !== id)), 3600)
   }
   const log = (state: LibraryData, action: string, entityType: string, entityId: string) => ({
-    ...state, activity: [{ id: freshId('activity'), actorId: role === 'student' ? 'member-01' : 'librarian-demo', action, entityType, entityId, timestamp: new Date().toISOString() }, ...state.activity].slice(0, 80),
+    ...state, activity: [{ id: freshId('activity'), actorId: role === 'student' ? '25CO64' : 'mirkword', action, entityType, entityId, timestamp: new Date().toISOString() }, ...state.activity].slice(0, 80),
   })
   const issue = (memberId: string, copyId: string, issueDate = today(), dueDate?: string) => {
     const member = validateMember(data, memberId)
@@ -101,7 +147,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       publicationYear: Number(bookInput.publicationYear) || new Date().getFullYear(), categoryId: bookInput.categoryId, description: bookInput.description || '', coverUrl: bookInput.coverUrl || '',
       language: bookInput.language || 'English', edition: bookInput.edition || '1st edition', pageCount: Number(bookInput.pageCount) || 240, shelfLocation: bookInput.shelfLocation || 'Floor 1 · A10',
       callNumber: bookInput.callNumber || 'QA 100.0', createdAt: existing?.createdAt || new Date().toISOString().slice(0, 10), archivedAt: existing?.archivedAt || null }
-    const newCopies: BookCopy[] = !existingId ? Array.from({ length: Math.max(1, Math.min(30, Number(copiesToAdd) || 1)) }, (_, i) => ({ id: freshId('copy'), bookId: id, accessionNumber: `NS-${String(100 + data.copies.length + i).padStart(4, '0')}`, status: 'available', shelfLocation: book.shelfLocation })) : []
+    const newCopies: BookCopy[] = !existingId ? Array.from({ length: Math.max(1, Math.min(30, Number(copiesToAdd) || 1)) }, (_, i) => ({ id: freshId('copy'), bookId: id, accessionNumber: `GH-${String(100 + data.copies.length + i).padStart(4, '0')}`, status: 'available', shelfLocation: book.shelfLocation })) : []
     setData(current => log({ ...current, books: existingId ? current.books.map(b => b.id === id ? book : b) : [book, ...current.books], copies: [...newCopies, ...current.copies] }, existingId ? `updated ${book.title}` : `added ${book.title}`, 'book', id))
   }
   const archiveBook = (bookId: string) => {
@@ -118,7 +164,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
     if (count < 0 && available.length < Math.abs(count)) throw new Error('You can only remove copies that are currently available.')
     setData(current => {
       let copies = current.copies
-      if (count > 0) copies = [...Array.from({ length: count }, (_, i) => ({ id: freshId('copy'), bookId, accessionNumber: `NS-${String(100 + current.copies.length + i).padStart(4, '0')}`, status: 'available' as const, shelfLocation: book.shelfLocation })), ...current.copies]
+      if (count > 0) copies = [...Array.from({ length: count }, (_, i) => ({ id: freshId('copy'), bookId, accessionNumber: `GH-${String(100 + current.copies.length + i).padStart(4, '0')}`, status: 'available' as const, shelfLocation: book.shelfLocation })), ...current.copies]
       else { const remove = new Set(available.slice(0, Math.abs(count)).map(c => c.id)); copies = current.copies.filter(c => !remove.has(c.id)) }
       return log({ ...current, copies }, `${count > 0 ? 'added' : 'removed'} ${Math.abs(count)} copies of ${book.title}`, 'book', bookId)
     })
@@ -126,10 +172,11 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   const saveMember: Store['saveMember'] = (input, existingId) => {
     if (!input.name.trim() || !input.email.trim()) throw new Error('Name and email are required.')
     if (data.members.some(m => m.email.toLowerCase() === input.email.toLowerCase() && m.id !== existingId)) throw new Error('A member with this email already exists.')
-    const id = existingId || freshId('member')
+    const id = existingId || input.rollNo || freshId('member')
     const old = data.members.find(m => m.id === existingId)
     const member: Member = { id, name: input.name.trim(), email: input.email.trim(), phone: input.phone || '', membershipType: input.membershipType,
-      membershipStatus: input.membershipStatus || 'Active', registrationDate: input.registrationDate || today(), expiryDate: input.expiryDate || addDays(new Date(), 365) }
+      membershipStatus: input.membershipStatus || 'Active', registrationDate: input.registrationDate || today(), expiryDate: input.expiryDate || addDays(new Date(), 365),
+      rollNo: input.rollNo || old?.rollNo, registrationNumber: input.registrationNumber || old?.registrationNumber, department: input.department || old?.department }
     setData(current => log({ ...current, members: existingId ? current.members.map(m => m.id === id ? member : m) : [member, ...current.members] }, `${old ? 'updated' : 'registered'} ${member.name}`, 'member', id))
   }
   const reserve = (memberId: string, bookId: string) => {
@@ -187,21 +234,21 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   }
   const payFine = (id: string) => {
     const existingFine = data.fines.find(f => f.id === id)
-    if (existingFine) { setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'paid' as const } : f) }, 'recorded a simulated fine payment', 'fine', id)); return }
+    if (existingFine) { setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'paid' as const } : f) }, 'recorded fine payment', 'fine', id)); return }
     const loan = data.loans.find(l => l.id === id && l.status === 'active' && daysBetween(l.dueDate) > 0)
     if (!loan) throw new Error('No unpaid fine is attached to this loan.')
     const fine = { id: freshId('fine'), loanId: loan.id, amount: daysBetween(loan.dueDate) * data.settings.finePerDay, status: 'paid' as const, waivedReason: null, createdAt: today() }
-    setData(current => log({ ...current, fines: [fine, ...current.fines] }, 'recorded a simulated fine payment', 'fine', fine.id))
+    setData(current => log({ ...current, fines: [fine, ...current.fines] }, 'recorded fine payment', 'fine', fine.id))
   }
   const waiveFine = (id: string, reason: string) => {
     if (!reason.trim()) throw new Error('Enter a reason for waiving this fine.')
-    setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'waived' as const, waivedReason: reason.trim() } : f) }, 'waived a demo fine', 'fine', id))
+    setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'waived' as const, waivedReason: reason.trim() } : f) }, 'waived fine', 'fine', id))
   }
   const readNotification = (id: string) => setData(current => ({ ...current, notifications: current.notifications.map(n => n.id === id ? { ...n, readAt: n.readAt || new Date().toISOString() } : n) }))
   const readAllNotifications = () => setData(current => ({ ...current, notifications: current.notifications.map(n => ({ ...n, readAt: n.readAt || new Date().toISOString() })) }))
   const updateSettings = (patch: Partial<LibraryData['settings']>) => setData(current => ({ ...current, settings: { ...current.settings, ...patch } }))
-  const resetData = () => { setData(createSeedData()); localStorage.removeItem(STORAGE_KEY) }
-  const value = useMemo<Store>(() => ({ data, role, setRole, studentId: 'member-01', toasts, toast, dismissToast: id => setToasts(current => current.filter(t => t.id !== id)),
+  const resetData = () => { setData(createSeedData()); localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(ROLE_KEY) }
+  const value = useMemo<Store>(() => ({ data, role, setRole, studentId: '25CO64', toasts, toast, dismissToast: id => setToasts(current => current.filter(t => t.id !== id)),
     issue, returnLoan, renew, saveBook, archiveBook, manageCopies, saveMember, reserve, cancelReservation, markReservationReady, fulfillReservation, payFine, waiveFine, readNotification, readAllNotifications, updateSettings, resetData }), [data, role, toasts])
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
 }
