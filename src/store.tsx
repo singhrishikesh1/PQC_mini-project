@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { addDays, createSeedData, daysBetween, today } from './data'
+import { api } from './api'
 import type { Book, BookCopy, LibraryData, Loan, Member, Reservation, Role } from './types'
 
 type Toast = { id: number; message: string; tone: 'success' | 'error' | 'info' }
@@ -17,6 +18,9 @@ type Store = {
   payFine: (id: string) => void; waiveFine: (id: string, reason: string) => void
   readNotification: (id: string) => void; readAllNotifications: () => void
   updateSettings: (patch: Partial<LibraryData['settings']>) => void; resetData: () => void
+  theme: 'light' | 'dark'; toggleTheme: () => void; setTheme: (theme: 'light' | 'dark') => void
+  backendStatus: { connected: boolean; engine: string; lastSync?: string; pingMs?: number }
+  syncWithBackend: () => Promise<void>
 }
 const STORAGE_KEY = 'ghrcem-library-system-v6'
 const ROLE_KEY = 'ghrcem-library-role-v5'
@@ -81,6 +85,82 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       else localStorage.removeItem(ROLE_KEY)
     } catch {}
   }
+  const THEME_KEY = 'ghrcem-library-theme'
+  const [theme, setThemeState] = useState<'light' | 'dark'>(() => {
+    try {
+      const saved = localStorage.getItem(THEME_KEY)
+      if (saved === 'dark' || saved === 'light') return saved
+      return typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    } catch {
+      return 'light'
+    }
+  })
+  useEffect(() => {
+    try { localStorage.setItem(THEME_KEY, theme) } catch {}
+    document.documentElement.setAttribute('data-theme', theme)
+    if (theme === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  }, [theme])
+  const toggleTheme = () => setThemeState(t => t === 'dark' ? 'light' : 'dark')
+  const setTheme = (t: 'light' | 'dark') => setThemeState(t)
+
+  const [backendStatus, setBackendStatus] = useState<{
+    connected: boolean
+    engine: string
+    lastSync?: string
+    pingMs?: number
+  }>({
+    connected: false,
+    engine: 'Prisma ORM (Connecting...)',
+  })
+
+  const syncWithBackend = async () => {
+    const start = performance.now()
+    try {
+      const health = await api.getHealth()
+      const pingMs = Math.round(performance.now() - start)
+      setBackendStatus({
+        connected: true,
+        engine: health.database.engine,
+        lastSync: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        pingMs,
+      })
+      const snapshot = await api.getSnapshot()
+      if (snapshot.success && snapshot.data && snapshot.data.books?.length > 0) {
+        setData(snapshot.data)
+      }
+    } catch {
+      setBackendStatus({
+        connected: false,
+        engine: 'Local Persistent Store (Offline)',
+      })
+    }
+  }
+
+  // Initial and recurring sync with Express REST API & Prisma PostgreSQL Backend
+  useEffect(() => {
+    syncWithBackend()
+    const timer = setInterval(() => {
+      api.getHealth()
+        .then(res => {
+          setBackendStatus(s => ({
+            ...s,
+            connected: true,
+            engine: res.database.engine,
+            lastSync: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+          }))
+        })
+        .catch(() => {
+          setBackendStatus(s => ({
+            ...s,
+            connected: false,
+            engine: 'Local Persistent Store (Offline)',
+          }))
+        })
+    }, 25000)
+    return () => clearInterval(timer)
+  }, [])
+
   const [toasts, setToasts] = useState<Toast[]>([])
   useEffect(() => { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) }, [data])
   const toast = (message: string, tone: Toast['tone'] = 'success') => {
@@ -105,6 +185,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
         notifications: [{ id: freshId('notification'), memberId, title: 'Book issued', message: `${book.title} has been checked out to you.`, type: 'returned' as const, createdAt: new Date().toISOString(), readAt: null }, ...current.notifications] }
       return log(next, `issued ${book.title} to ${member.name}`, 'loan', loan.id)
     })
+    api.issueBook(memberId, copyId, issueDate, validDueDate).catch(() => {})
     return loan
   }
   const returnLoan = (loanId: string, condition: ReturnCondition = 'available') => {
@@ -127,6 +208,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
         ] }
       return log(next, condition === 'available' ? `returned ${book.title}` : `recorded ${book.title} as ${condition}`, 'loan', loanId)
     })
+    api.returnBook(loanId, condition).catch(() => {})
   }
   const renew = (loanId: string) => {
     const loan = data.loans.find(l => l.id === loanId && l.status === 'active')
@@ -137,6 +219,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
     const book = data.books.find(b => b.id === copy.bookId)!
     if (data.reservations.some(r => r.bookId === book.id && ['pending', 'ready'].includes(r.status))) throw new Error('This title has a reservation queue and cannot be renewed.')
     setData(current => log({ ...current, loans: current.loans.map(l => l.id === loanId ? { ...l, dueDate: addDays(l.dueDate, current.settings.loanDurationDays), renewalCount: l.renewalCount + 1 } : l) }, `renewed ${book.title}`, 'loan', loanId))
+    api.renewLoan(loanId).catch(() => {})
   }
   const saveBook: Store['saveBook'] = (bookInput, existingId, copiesToAdd = 1) => {
     const duplicate = data.books.find(b => b.isbn === bookInput.isbn && b.id !== existingId)
@@ -149,12 +232,14 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       callNumber: bookInput.callNumber || 'QA 100.0', createdAt: existing?.createdAt || new Date().toISOString().slice(0, 10), archivedAt: existing?.archivedAt || null }
     const newCopies: BookCopy[] = !existingId ? Array.from({ length: Math.max(1, Math.min(30, Number(copiesToAdd) || 1)) }, (_, i) => ({ id: freshId('copy'), bookId: id, accessionNumber: `GH-${String(100 + data.copies.length + i).padStart(4, '0')}`, status: 'available', shelfLocation: book.shelfLocation })) : []
     setData(current => log({ ...current, books: existingId ? current.books.map(b => b.id === id ? book : b) : [book, ...current.books], copies: [...newCopies, ...current.copies] }, existingId ? `updated ${book.title}` : `added ${book.title}`, 'book', id))
+    api.saveBook({ ...book, copiesCount: copiesToAdd }, existingId).catch(() => {})
   }
   const archiveBook = (bookId: string) => {
     const book = data.books.find(b => b.id === bookId)
     if (!book) throw new Error('Book not found.')
     if (data.copies.some(c => c.bookId === bookId && c.status === 'loaned')) throw new Error('Return all active copies before archiving this title.')
     setData(current => log({ ...current, books: current.books.map(b => b.id === bookId ? { ...b, archivedAt: today() } : b) }, `archived ${book.title}`, 'book', bookId))
+    api.archiveBook(bookId).catch(() => {})
   }
   const manageCopies = (bookId: string, count: number) => {
     const book = data.books.find(b => b.id === bookId)
@@ -168,6 +253,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       else { const remove = new Set(available.slice(0, Math.abs(count)).map(c => c.id)); copies = current.copies.filter(c => !remove.has(c.id)) }
       return log({ ...current, copies }, `${count > 0 ? 'added' : 'removed'} ${Math.abs(count)} copies of ${book.title}`, 'book', bookId)
     })
+    api.manageCopies(bookId, count).catch(() => {})
   }
   const saveMember: Store['saveMember'] = (input, existingId) => {
     if (!input.name.trim() || !input.email.trim()) throw new Error('Name and email are required.')
@@ -178,6 +264,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
       membershipStatus: input.membershipStatus || 'Active', registrationDate: input.registrationDate || today(), expiryDate: input.expiryDate || addDays(new Date(), 365),
       rollNo: input.rollNo || old?.rollNo, registrationNumber: input.registrationNumber || old?.registrationNumber, department: input.department || old?.department }
     setData(current => log({ ...current, members: existingId ? current.members.map(m => m.id === id ? member : m) : [member, ...current.members] }, `${old ? 'updated' : 'registered'} ${member.name}`, 'member', id))
+    api.saveMember(member, existingId).catch(() => {})
   }
   const reserve = (memberId: string, bookId: string) => {
     if (!data.members.some(m => m.id === memberId && m.membershipStatus === 'Active' && m.expiryDate >= today())) throw new Error('An active membership is required to reserve a book.')
@@ -188,6 +275,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
     const existingQueue = data.reservations.filter(r => r.bookId === bookId && ['pending', 'ready'].includes(r.status)).length
     const reservation: Reservation = { id: freshId('reservation'), memberId, bookId, reservationDate: today(), queuePosition: existingQueue + 1, status: 'pending' }
     setData(current => log({ ...current, reservations: [...current.reservations, reservation], notifications: [{ id: freshId('notification'), memberId, title: 'Reservation placed', message: `You are #${reservation.queuePosition} in the queue for ${book.title}.`, type: 'reservation', createdAt: new Date().toISOString(), readAt: null }, ...current.notifications] }, `reserved ${book.title}`, 'reservation', reservation.id))
+    api.createReservation(memberId, bookId).catch(() => {})
     return reservation
   }
   const cancelReservation = (id: string) => {
@@ -207,6 +295,7 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
         notifications: reservation.status === 'ready' && nextPending ? [{ id: freshId('notification'), memberId: nextPending.memberId, title: 'Reservation ready', message: `A reserved copy is now ready for collection.`, type: 'reservation' as const, createdAt: new Date().toISOString(), readAt: null }, ...current.notifications] : current.notifications }
       return log(next, 'cancelled a reservation', 'reservation', id)
     })
+    api.cancelReservation(id).catch(() => {})
   }
   const markReservationReady = (id: string) => {
     const reservation = data.reservations.find(r => r.id === id && r.status === 'pending')
@@ -234,22 +323,45 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   }
   const payFine = (id: string) => {
     const existingFine = data.fines.find(f => f.id === id)
-    if (existingFine) { setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'paid' as const } : f) }, 'recorded fine payment', 'fine', id)); return }
+    if (existingFine) {
+      setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'paid' as const } : f) }, 'recorded fine payment', 'fine', id))
+      api.payFine(id).catch(() => {})
+      return
+    }
     const loan = data.loans.find(l => l.id === id && l.status === 'active' && daysBetween(l.dueDate) > 0)
     if (!loan) throw new Error('No unpaid fine is attached to this loan.')
     const fine = { id: freshId('fine'), loanId: loan.id, amount: daysBetween(loan.dueDate) * data.settings.finePerDay, status: 'paid' as const, waivedReason: null, createdAt: today() }
     setData(current => log({ ...current, fines: [fine, ...current.fines] }, 'recorded fine payment', 'fine', fine.id))
+    api.payFine(fine.id).catch(() => {})
   }
   const waiveFine = (id: string, reason: string) => {
     if (!reason.trim()) throw new Error('Enter a reason for waiving this fine.')
     setData(current => log({ ...current, fines: current.fines.map(f => f.id === id ? { ...f, status: 'waived' as const, waivedReason: reason.trim() } : f) }, 'waived fine', 'fine', id))
+    api.waiveFine(id, reason).catch(() => {})
   }
-  const readNotification = (id: string) => setData(current => ({ ...current, notifications: current.notifications.map(n => n.id === id ? { ...n, readAt: n.readAt || new Date().toISOString() } : n) }))
-  const readAllNotifications = () => setData(current => ({ ...current, notifications: current.notifications.map(n => ({ ...n, readAt: n.readAt || new Date().toISOString() })) }))
-  const updateSettings = (patch: Partial<LibraryData['settings']>) => setData(current => ({ ...current, settings: { ...current.settings, ...patch } }))
-  const resetData = () => { setData(createSeedData()); localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(ROLE_KEY) }
-  const value = useMemo<Store>(() => ({ data, role, setRole, studentId: '25CO64', toasts, toast, dismissToast: id => setToasts(current => current.filter(t => t.id !== id)),
-    issue, returnLoan, renew, saveBook, archiveBook, manageCopies, saveMember, reserve, cancelReservation, markReservationReady, fulfillReservation, payFine, waiveFine, readNotification, readAllNotifications, updateSettings, resetData }), [data, role, toasts])
+  const readNotification = (id: string) => {
+    setData(current => ({ ...current, notifications: current.notifications.map(n => n.id === id ? { ...n, readAt: n.readAt || new Date().toISOString() } : n) }))
+    api.markNotificationRead(id).catch(() => {})
+  }
+  const readAllNotifications = () => {
+    setData(current => ({ ...current, notifications: current.notifications.map(n => ({ ...n, readAt: n.readAt || new Date().toISOString() })) }))
+    api.markAllNotificationsRead(role === 'student' ? '25CO64' : undefined).catch(() => {})
+  }
+  const updateSettings = (patch: Partial<LibraryData['settings']>) => {
+    setData(current => ({ ...current, settings: { ...current.settings, ...patch } }))
+    api.updateSettings(patch).catch(() => {})
+  }
+  const resetData = () => {
+    setData(createSeedData())
+    localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem(ROLE_KEY)
+    api.resetDatabase().catch(() => {})
+  }
+  const value = useMemo<Store>(() => ({
+    data, role, setRole, studentId: '25CO64', toasts, toast, dismissToast: id => setToasts(current => current.filter(t => t.id !== id)),
+    issue, returnLoan, renew, saveBook, archiveBook, manageCopies, saveMember, reserve, cancelReservation, markReservationReady, fulfillReservation,
+    payFine, waiveFine, readNotification, readAllNotifications, updateSettings, resetData, theme, toggleTheme, setTheme, backendStatus, syncWithBackend
+  }), [data, role, toasts, theme, backendStatus])
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
 }
 export function useLibrary() { const value = useContext(StoreContext); if (!value) throw new Error('useLibrary must be used within LibraryProvider'); return value }

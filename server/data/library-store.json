@@ -1,0 +1,2259 @@
+{
+  "categories": [
+    {
+      "id": "cat-cs",
+      "name": "Computer Science",
+      "code": "CS",
+      "description": "Systems, networks, and computing"
+    },
+    {
+      "id": "cat-prog",
+      "name": "Programming",
+      "code": "PROG",
+      "description": "Languages and software craft"
+    },
+    {
+      "id": "cat-ai",
+      "name": "Artificial Intelligence",
+      "code": "AI",
+      "description": "Machine learning and intelligent systems"
+    },
+    {
+      "id": "cat-science",
+      "name": "Science",
+      "code": "SCI",
+      "description": "The natural world and discovery"
+    },
+    {
+      "id": "cat-math",
+      "name": "Mathematics",
+      "code": "MATH",
+      "description": "Mathematical ideas and methods"
+    },
+    {
+      "id": "cat-fiction",
+      "name": "Fiction",
+      "code": "FIC",
+      "description": "Stories, novels, and imagination"
+    },
+    {
+      "id": "cat-lit",
+      "name": "Literature",
+      "code": "LIT",
+      "description": "Essays, poetry, and literary studies"
+    },
+    {
+      "id": "cat-business",
+      "name": "Business",
+      "code": "BUS",
+      "description": "Leadership, strategy, and work"
+    },
+    {
+      "id": "cat-finance",
+      "name": "Finance",
+      "code": "FIN",
+      "description": "Markets, investing, and economics"
+    },
+    {
+      "id": "cat-history",
+      "name": "History",
+      "code": "HIST",
+      "description": "People and events through time"
+    }
+  ],
+  "books": [
+    {
+      "id": "book-001",
+      "title": "The Pragmatic Programmer",
+      "author": "David Thomas & Andrew Hunt",
+      "isbn": "978-100-0000000-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2008,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 220,
+      "description": "A practical guide to building adaptable software and developing a lasting craft.",
+      "shelfLocation": "Stack A-1",
+      "callNumber": "PROG 500.1",
+      "archivedAt": null,
+      "createdAt": "2026-06-14"
+    },
+    {
+      "id": "book-002",
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "isbn": "978-100-0018471-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2009,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 237,
+      "description": "A tour of the principles behind reliable, scalable, and maintainable data systems.",
+      "shelfLocation": "Stack B-2",
+      "callNumber": "CS 510.2",
+      "archivedAt": null,
+      "createdAt": "2026-06-15"
+    },
+    {
+      "id": "book-003",
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "isbn": "978-100-0036942-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2010,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 254,
+      "description": "Principles and patterns for writing software that is easier to understand and change.",
+      "shelfLocation": "Stack C-3",
+      "callNumber": "PROG 520.3",
+      "archivedAt": null,
+      "createdAt": "2026-06-16"
+    },
+    {
+      "id": "book-004",
+      "title": "The Algorithm Design Manual",
+      "author": "Steven S. Skiena",
+      "isbn": "978-100-0055413-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2011,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 271,
+      "description": "A hands-on guide to algorithmic thinking, techniques, and problem solving.",
+      "shelfLocation": "Stack D-4",
+      "callNumber": "CS 530.4",
+      "archivedAt": null,
+      "createdAt": "2026-06-17"
+    },
+    {
+      "id": "book-005",
+      "title": "Introduction to Algorithms",
+      "author": "Thomas H. Cormen et al.",
+      "isbn": "978-100-0073884-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2012,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 288,
+      "description": "A comprehensive introduction to modern algorithms and their analysis.",
+      "shelfLocation": "Stack E-5",
+      "callNumber": "CS 540.5",
+      "archivedAt": null,
+      "createdAt": "2026-06-18"
+    },
+    {
+      "id": "book-006",
+      "title": "Grokking Algorithms",
+      "author": "Aditya Bhargava",
+      "isbn": "978-100-0092355-6",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2013,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 305,
+      "description": "An approachable visual introduction to common algorithms and data structures.",
+      "shelfLocation": "Stack F-6",
+      "callNumber": "CS 550.6",
+      "archivedAt": null,
+      "createdAt": "2026-06-19"
+    },
+    {
+      "id": "book-007",
+      "title": "You Don’t Know JS Yet",
+      "author": "Kyle Simpson",
+      "isbn": "978-100-0110826-7",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2014,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 322,
+      "description": "A deep exploration of the JavaScript language and its core mechanics.",
+      "shelfLocation": "Stack A-7",
+      "callNumber": "PROG 560.7",
+      "archivedAt": null,
+      "createdAt": "2026-06-20"
+    },
+    {
+      "id": "book-008",
+      "title": "Effective TypeScript",
+      "author": "Dan Vanderkam",
+      "isbn": "978-100-0129297-8",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2015,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 339,
+      "description": "Practical techniques for getting the most from TypeScript.",
+      "shelfLocation": "Stack B-8",
+      "callNumber": "PROG 570.8",
+      "archivedAt": null,
+      "createdAt": "2026-06-21"
+    },
+    {
+      "id": "book-009",
+      "title": "The Art of Computer Programming",
+      "author": "Donald E. Knuth",
+      "isbn": "978-100-0147768-9",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2016,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 356,
+      "description": "A foundational study of algorithms, analysis, and computer science.",
+      "shelfLocation": "Stack C-9",
+      "callNumber": "CS 580.1",
+      "archivedAt": null,
+      "createdAt": "2026-06-22"
+    },
+    {
+      "id": "book-010",
+      "title": "Computer Networking: A Top-Down Approach",
+      "author": "James Kurose & Keith Ross",
+      "isbn": "978-100-0166239-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2017,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 373,
+      "description": "A clear introduction to networking concepts from the application layer down.",
+      "shelfLocation": "Stack D-10",
+      "callNumber": "CS 590.2",
+      "archivedAt": null,
+      "createdAt": "2026-06-23"
+    },
+    {
+      "id": "book-011",
+      "title": "The Alignment Problem",
+      "author": "Brian Christian",
+      "isbn": "978-100-0184710-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2018,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 390,
+      "description": "A human perspective on the challenges of teaching machines our values.",
+      "shelfLocation": "Stack E-11",
+      "callNumber": "AI 600.3",
+      "archivedAt": null,
+      "createdAt": "2026-06-24"
+    },
+    {
+      "id": "book-012",
+      "title": "Artificial Intelligence: A Modern Approach",
+      "author": "Stuart Russell & Peter Norvig",
+      "isbn": "978-100-0203181-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2019,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 407,
+      "description": "A broad introduction to the theory and practice of artificial intelligence.",
+      "shelfLocation": "Stack F-12",
+      "callNumber": "AI 610.4",
+      "archivedAt": null,
+      "createdAt": "2026-06-25"
+    },
+    {
+      "id": "book-013",
+      "title": "Deep Learning",
+      "author": "Ian Goodfellow et al.",
+      "isbn": "978-100-0221652-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2020,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 424,
+      "description": "An introduction to the mathematical foundations and methods of deep learning.",
+      "shelfLocation": "Stack A-1",
+      "callNumber": "AI 620.5",
+      "archivedAt": null,
+      "createdAt": "2026-06-26"
+    },
+    {
+      "id": "book-014",
+      "title": "Hands-On Machine Learning",
+      "author": "Aurélien Géron",
+      "isbn": "978-100-0240123-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2021,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 441,
+      "description": "Practical approaches to machine learning with clear explanations and examples.",
+      "shelfLocation": "Stack B-2",
+      "callNumber": "AI 630.6",
+      "archivedAt": null,
+      "createdAt": "2026-06-27"
+    },
+    {
+      "id": "book-015",
+      "title": "The Gene",
+      "author": "Siddhartha Mukherjee",
+      "isbn": "978-100-0258594-6",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2022,
+      "categoryId": "cat-science",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 458,
+      "description": "A history of heredity, genetics, and the search to understand human identity.",
+      "shelfLocation": "Stack C-3",
+      "callNumber": "SCI 640.7",
+      "archivedAt": null,
+      "createdAt": "2026-06-28"
+    },
+    {
+      "id": "book-016",
+      "title": "A Brief History of Time",
+      "author": "Stephen Hawking",
+      "isbn": "978-100-0277065-7",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2023,
+      "categoryId": "cat-science",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 475,
+      "description": "An exploration of cosmology, space, time, and the universe.",
+      "shelfLocation": "Stack D-4",
+      "callNumber": "SCI 650.8",
+      "archivedAt": null,
+      "createdAt": "2026-06-29"
+    },
+    {
+      "id": "book-017",
+      "title": "The Body",
+      "author": "Bill Bryson",
+      "isbn": "978-100-0295536-8",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2008,
+      "categoryId": "cat-science",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 492,
+      "description": "A lively guide to the remarkable systems that make the human body work.",
+      "shelfLocation": "Stack E-5",
+      "callNumber": "SCI 660.1",
+      "archivedAt": null,
+      "createdAt": "2026-06-30"
+    },
+    {
+      "id": "book-018",
+      "title": "Cosmos",
+      "author": "Carl Sagan",
+      "isbn": "978-100-0314007-9",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2009,
+      "categoryId": "cat-science",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 509,
+      "description": "A sweeping journey through science, civilization, and our place in the cosmos.",
+      "shelfLocation": "Stack F-6",
+      "callNumber": "SCI 670.2",
+      "archivedAt": null,
+      "createdAt": "2026-07-01"
+    },
+    {
+      "id": "book-019",
+      "title": "The Joy of x",
+      "author": "Steven Strogatz",
+      "isbn": "978-100-0332478-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2010,
+      "categoryId": "cat-math",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 526,
+      "description": "A friendly path through the beauty and usefulness of mathematics.",
+      "shelfLocation": "Stack A-7",
+      "callNumber": "MATH 680.3",
+      "archivedAt": null,
+      "createdAt": "2026-07-02"
+    },
+    {
+      "id": "book-020",
+      "title": "Fermat’s Last Theorem",
+      "author": "Simon Singh",
+      "isbn": "978-100-0350949-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2011,
+      "categoryId": "cat-math",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 543,
+      "description": "The story of a riddle that confounded the greatest minds for centuries.",
+      "shelfLocation": "Stack B-8",
+      "callNumber": "MATH 690.4",
+      "archivedAt": null,
+      "createdAt": "2026-07-03"
+    },
+    {
+      "id": "book-021",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn": "978-100-0369420-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2012,
+      "categoryId": "cat-business",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 560,
+      "description": "An investigation of the two modes of thought that drive human judgment.",
+      "shelfLocation": "Stack C-9",
+      "callNumber": "BUS 700.5",
+      "archivedAt": null,
+      "createdAt": "2026-07-04"
+    },
+    {
+      "id": "book-022",
+      "title": "Zero to One",
+      "author": "Peter Thiel & Blake Masters",
+      "isbn": "978-100-0387891-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2013,
+      "categoryId": "cat-business",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 577,
+      "description": "Notes on startups, innovation, and how to build a novel future.",
+      "shelfLocation": "Stack D-10",
+      "callNumber": "BUS 710.6",
+      "archivedAt": null,
+      "createdAt": "2026-07-05"
+    },
+    {
+      "id": "book-023",
+      "title": "The Psychology of Money",
+      "author": "Morgan Housel",
+      "isbn": "978-100-0406362-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2014,
+      "categoryId": "cat-finance",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 594,
+      "description": "Timeless lessons on wealth, greed, and the psychology behind financial choices.",
+      "shelfLocation": "Stack E-11",
+      "callNumber": "FIN 720.7",
+      "archivedAt": null,
+      "createdAt": "2026-07-06"
+    },
+    {
+      "id": "book-024",
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "isbn": "978-100-0424833-6",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2015,
+      "categoryId": "cat-history",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 611,
+      "description": "A narrative of how an insignificant ape became the ruler of planet Earth.",
+      "shelfLocation": "Stack F-12",
+      "callNumber": "HIST 730.8",
+      "archivedAt": null,
+      "createdAt": "2026-07-07"
+    },
+    {
+      "id": "book-025",
+      "title": "Guns, Germs, and Steel",
+      "author": "Jared Diamond",
+      "isbn": "978-100-0443304-7",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2016,
+      "categoryId": "cat-history",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 628,
+      "description": "A study of the environmental factors that shaped human societies.",
+      "shelfLocation": "Stack A-1",
+      "callNumber": "HIST 740.1",
+      "archivedAt": null,
+      "createdAt": "2026-07-08"
+    },
+    {
+      "id": "book-026",
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "isbn": "978-100-0461775-8",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2017,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 645,
+      "description": "A poetic tale of loneliness, friendship, love, and loss.",
+      "shelfLocation": "Stack B-2",
+      "callNumber": "FIC 750.2",
+      "archivedAt": null,
+      "createdAt": "2026-07-09"
+    },
+    {
+      "id": "book-027",
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "978-100-0480246-9",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2018,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 662,
+      "description": "A vision of totalitarian control and surveillance in a modern dystopia.",
+      "shelfLocation": "Stack C-3",
+      "callNumber": "FIC 760.3",
+      "archivedAt": null,
+      "createdAt": "2026-07-10"
+    },
+    {
+      "id": "book-028",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "isbn": "978-100-0498717-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2019,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 679,
+      "description": "A novel of compassion, justice, and courage in the American South.",
+      "shelfLocation": "Stack D-4",
+      "callNumber": "FIC 770.4",
+      "archivedAt": null,
+      "createdAt": "2026-07-11"
+    },
+    {
+      "id": "book-029",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "978-100-0517188-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2020,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 696,
+      "description": "A portrait of the Jazz Age, illusion, obsession, and the American dream.",
+      "shelfLocation": "Stack E-5",
+      "callNumber": "FIC 780.5",
+      "archivedAt": null,
+      "createdAt": "2026-07-12"
+    },
+    {
+      "id": "book-030",
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "isbn": "978-100-0535659-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2021,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 713,
+      "description": "A speculative vision of a technological society without suffering or freedom.",
+      "shelfLocation": "Stack F-6",
+      "callNumber": "FIC 790.6",
+      "archivedAt": null,
+      "createdAt": "2026-07-13"
+    },
+    {
+      "id": "book-031",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "isbn": "978-100-0554130-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2022,
+      "categoryId": "cat-fiction",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 730,
+      "description": "A fable about following dreams and listening to one’s own heart.",
+      "shelfLocation": "Stack A-7",
+      "callNumber": "FIC 800.7",
+      "archivedAt": null,
+      "createdAt": "2026-07-14"
+    },
+    {
+      "id": "book-032",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "isbn": "978-100-0572601-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2023,
+      "categoryId": "cat-lit",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 227,
+      "description": "A psychological study of crime, guilt, and moral redemption.",
+      "shelfLocation": "Stack B-8",
+      "callNumber": "LIT 810.8",
+      "archivedAt": null,
+      "createdAt": "2026-07-15"
+    },
+    {
+      "id": "book-033",
+      "title": "Meditations",
+      "author": "Marcus Aurelius",
+      "isbn": "978-100-0591072-6",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2008,
+      "categoryId": "cat-lit",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 244,
+      "description": "Personal reflections on resilience, duty, and practical stoic wisdom.",
+      "shelfLocation": "Stack C-9",
+      "callNumber": "LIT 820.1",
+      "archivedAt": null,
+      "createdAt": "2026-07-16"
+    },
+    {
+      "id": "book-034",
+      "title": "Man’s Search for Meaning",
+      "author": "Viktor E. Frankl",
+      "isbn": "978-100-0609543-7",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2009,
+      "categoryId": "cat-lit",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 261,
+      "description": "A psychiatrist’s memoir of surviving camps and finding purpose in suffering.",
+      "shelfLocation": "Stack D-10",
+      "callNumber": "LIT 830.2",
+      "archivedAt": null,
+      "createdAt": "2026-07-17"
+    },
+    {
+      "id": "book-035",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "isbn": "978-100-0628014-8",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2010,
+      "categoryId": "cat-business",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 278,
+      "description": "A practical guide to building small habits that lead to remarkable results.",
+      "shelfLocation": "Stack E-11",
+      "callNumber": "BUS 840.3",
+      "archivedAt": null,
+      "createdAt": "2026-07-18"
+    },
+    {
+      "id": "book-036",
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "isbn": "978-100-0646485-9",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2011,
+      "categoryId": "cat-business",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 295,
+      "description": "Rules for focused success in a world full of digital distractions.",
+      "shelfLocation": "Stack F-12",
+      "callNumber": "BUS 850.4",
+      "archivedAt": null,
+      "createdAt": "2026-07-19"
+    },
+    {
+      "id": "book-037",
+      "title": "Continuous Delivery",
+      "author": "Jez Humble & David Farley",
+      "isbn": "978-100-0664956-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2012,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 312,
+      "description": "Reliable software releases through build, test, and deployment automation.",
+      "shelfLocation": "Stack A-1",
+      "callNumber": "PROG 860.5",
+      "archivedAt": null,
+      "createdAt": "2026-07-20"
+    },
+    {
+      "id": "book-038",
+      "title": "Site Reliability Engineering",
+      "author": "Betsy Beyer et al.",
+      "isbn": "978-100-0683427-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2013,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 329,
+      "description": "How Google runs production systems at global scale.",
+      "shelfLocation": "Stack B-2",
+      "callNumber": "CS 870.6",
+      "archivedAt": null,
+      "createdAt": "2026-07-21"
+    },
+    {
+      "id": "book-039",
+      "title": "Database Internals",
+      "author": "Alex Petrov",
+      "isbn": "978-100-0701898-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2014,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 346,
+      "description": "A deep dive into storage engines and distributed database architectures.",
+      "shelfLocation": "Stack C-3",
+      "callNumber": "CS 880.7",
+      "archivedAt": null,
+      "createdAt": "2026-07-22"
+    },
+    {
+      "id": "book-040",
+      "title": "Superintelligence",
+      "author": "Nick Bostrom",
+      "isbn": "978-100-0720369-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2015,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 363,
+      "description": "Paths, dangers, and strategies for the future of general artificial intelligence.",
+      "shelfLocation": "Stack D-4",
+      "callNumber": "AI 890.8",
+      "archivedAt": null,
+      "createdAt": "2026-07-23"
+    },
+    {
+      "id": "book-041",
+      "title": "Life 3.0",
+      "author": "Max Tegmark",
+      "isbn": "978-100-0738840-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2016,
+      "categoryId": "cat-ai",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 380,
+      "description": "Being human in the age of artificial intelligence.",
+      "shelfLocation": "Stack E-5",
+      "callNumber": "AI 900.1",
+      "archivedAt": null,
+      "createdAt": "2026-07-24"
+    },
+    {
+      "id": "book-042",
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "isbn": "978-100-0757311-6",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2017,
+      "categoryId": "cat-science",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 397,
+      "description": "A revolutionary view of natural selection through the lens of the gene.",
+      "shelfLocation": "Stack F-6",
+      "callNumber": "SCI 910.2",
+      "archivedAt": null,
+      "createdAt": "2026-07-25"
+    },
+    {
+      "id": "book-043",
+      "title": "Structure and Interpretation of Computer Programs",
+      "author": "Harold Abelson & Gerald Jay Sussman",
+      "isbn": "978-100-0775782-7",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2018,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 414,
+      "description": "A classic text on abstraction, programming, and computational thinking.",
+      "shelfLocation": "Stack A-7",
+      "callNumber": "PROG 920.3",
+      "archivedAt": null,
+      "createdAt": "2026-07-26"
+    },
+    {
+      "id": "book-044",
+      "title": "Refactoring",
+      "author": "Martin Fowler",
+      "isbn": "978-100-0794253-8",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2019,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 431,
+      "description": "Improving the design of existing code without altering its observable behavior.",
+      "shelfLocation": "Stack B-8",
+      "callNumber": "PROG 930.4",
+      "archivedAt": null,
+      "createdAt": "2026-07-27"
+    },
+    {
+      "id": "book-045",
+      "title": "Domain-Driven Design",
+      "author": "Eric Evans",
+      "isbn": "978-100-0812724-9",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2020,
+      "categoryId": "cat-prog",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 448,
+      "description": "Tackling complexity in the heart of software through domain modeling.",
+      "shelfLocation": "Stack C-9",
+      "callNumber": "PROG 940.5",
+      "archivedAt": null,
+      "createdAt": "2026-07-28"
+    },
+    {
+      "id": "book-046",
+      "title": "High Performance Browser Networking",
+      "author": "Ilya Grigorik",
+      "isbn": "978-100-0831195-1",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2021,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 465,
+      "description": "What every web developer should know about networking performance.",
+      "shelfLocation": "Stack D-10",
+      "callNumber": "CS 950.6",
+      "archivedAt": null,
+      "createdAt": "2026-07-29"
+    },
+    {
+      "id": "book-047",
+      "title": "Operating Systems: Three Easy Pieces",
+      "author": "Remzi & Andrea Arpaci-Dusseau",
+      "isbn": "978-100-0849666-2",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2022,
+      "categoryId": "cat-cs",
+      "language": "English",
+      "edition": "3rd edition",
+      "pageCount": 482,
+      "description": "An introduction to virtualization, concurrency, and persistence in operating systems.",
+      "shelfLocation": "Stack E-11",
+      "callNumber": "CS 960.7",
+      "archivedAt": null,
+      "createdAt": "2026-07-30"
+    },
+    {
+      "id": "book-048",
+      "title": "Linear Algebra Done Right",
+      "author": "Sheldon Axler",
+      "isbn": "978-100-0868137-3",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2023,
+      "categoryId": "cat-math",
+      "language": "English",
+      "edition": "4th edition",
+      "pageCount": 499,
+      "description": "A clean, modern approach to linear algebra focusing on linear operators.",
+      "shelfLocation": "Stack F-12",
+      "callNumber": "MATH 970.8",
+      "archivedAt": null,
+      "createdAt": "2026-07-31"
+    },
+    {
+      "id": "book-049",
+      "title": "Principles of Mathematical Analysis",
+      "author": "Walter Rudin",
+      "isbn": "978-100-0886608-4",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2008,
+      "categoryId": "cat-math",
+      "language": "English",
+      "edition": "1st edition",
+      "pageCount": 516,
+      "description": "A rigorous foundation in real analysis and metric spaces.",
+      "shelfLocation": "Stack A-1",
+      "callNumber": "MATH 980.1",
+      "archivedAt": null,
+      "createdAt": "2026-08-01"
+    },
+    {
+      "id": "book-050",
+      "title": "The Intelligent Investor",
+      "author": "Benjamin Graham",
+      "isbn": "978-100-0905079-5",
+      "publisher": "GHRCEM Academic Press",
+      "publicationYear": 2009,
+      "categoryId": "cat-finance",
+      "language": "English",
+      "edition": "2nd edition",
+      "pageCount": 533,
+      "description": "The definitive guide on value investing and long-term capital preservation.",
+      "shelfLocation": "Stack B-2",
+      "callNumber": "FIN 990.2",
+      "archivedAt": null,
+      "createdAt": "2026-08-02"
+    }
+  ],
+  "copies": [
+    {
+      "id": "copy-book-001-1",
+      "bookId": "book-001",
+      "barcode": "GHRCEM-BOOK-001-01",
+      "copyNumber": 1,
+      "status": "loaned"
+    },
+    {
+      "id": "copy-book-001-2",
+      "bookId": "book-001",
+      "barcode": "GHRCEM-BOOK-001-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-002-1",
+      "bookId": "book-002",
+      "barcode": "GHRCEM-BOOK-002-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-002-2",
+      "bookId": "book-002",
+      "barcode": "GHRCEM-BOOK-002-02",
+      "copyNumber": 2,
+      "status": "loaned"
+    },
+    {
+      "id": "copy-book-002-3",
+      "bookId": "book-002",
+      "barcode": "GHRCEM-BOOK-002-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-002-4",
+      "bookId": "book-002",
+      "barcode": "GHRCEM-BOOK-002-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-003-1",
+      "bookId": "book-003",
+      "barcode": "GHRCEM-BOOK-003-01",
+      "copyNumber": 1,
+      "status": "loaned"
+    },
+    {
+      "id": "copy-book-003-2",
+      "bookId": "book-003",
+      "barcode": "GHRCEM-BOOK-003-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-004-1",
+      "bookId": "book-004",
+      "barcode": "GHRCEM-BOOK-004-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-004-2",
+      "bookId": "book-004",
+      "barcode": "GHRCEM-BOOK-004-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-004-3",
+      "bookId": "book-004",
+      "barcode": "GHRCEM-BOOK-004-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-004-4",
+      "bookId": "book-004",
+      "barcode": "GHRCEM-BOOK-004-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-005-1",
+      "bookId": "book-005",
+      "barcode": "GHRCEM-BOOK-005-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-005-2",
+      "bookId": "book-005",
+      "barcode": "GHRCEM-BOOK-005-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-006-1",
+      "bookId": "book-006",
+      "barcode": "GHRCEM-BOOK-006-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-006-2",
+      "bookId": "book-006",
+      "barcode": "GHRCEM-BOOK-006-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-006-3",
+      "bookId": "book-006",
+      "barcode": "GHRCEM-BOOK-006-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-006-4",
+      "bookId": "book-006",
+      "barcode": "GHRCEM-BOOK-006-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-007-1",
+      "bookId": "book-007",
+      "barcode": "GHRCEM-BOOK-007-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-007-2",
+      "bookId": "book-007",
+      "barcode": "GHRCEM-BOOK-007-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-008-1",
+      "bookId": "book-008",
+      "barcode": "GHRCEM-BOOK-008-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-008-2",
+      "bookId": "book-008",
+      "barcode": "GHRCEM-BOOK-008-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-008-3",
+      "bookId": "book-008",
+      "barcode": "GHRCEM-BOOK-008-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-008-4",
+      "bookId": "book-008",
+      "barcode": "GHRCEM-BOOK-008-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-009-1",
+      "bookId": "book-009",
+      "barcode": "GHRCEM-BOOK-009-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-009-2",
+      "bookId": "book-009",
+      "barcode": "GHRCEM-BOOK-009-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-010-1",
+      "bookId": "book-010",
+      "barcode": "GHRCEM-BOOK-010-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-010-2",
+      "bookId": "book-010",
+      "barcode": "GHRCEM-BOOK-010-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-010-3",
+      "bookId": "book-010",
+      "barcode": "GHRCEM-BOOK-010-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-010-4",
+      "bookId": "book-010",
+      "barcode": "GHRCEM-BOOK-010-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-011-1",
+      "bookId": "book-011",
+      "barcode": "GHRCEM-BOOK-011-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-011-2",
+      "bookId": "book-011",
+      "barcode": "GHRCEM-BOOK-011-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-012-1",
+      "bookId": "book-012",
+      "barcode": "GHRCEM-BOOK-012-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-012-2",
+      "bookId": "book-012",
+      "barcode": "GHRCEM-BOOK-012-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-012-3",
+      "bookId": "book-012",
+      "barcode": "GHRCEM-BOOK-012-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-012-4",
+      "bookId": "book-012",
+      "barcode": "GHRCEM-BOOK-012-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-013-1",
+      "bookId": "book-013",
+      "barcode": "GHRCEM-BOOK-013-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-013-2",
+      "bookId": "book-013",
+      "barcode": "GHRCEM-BOOK-013-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-014-1",
+      "bookId": "book-014",
+      "barcode": "GHRCEM-BOOK-014-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-014-2",
+      "bookId": "book-014",
+      "barcode": "GHRCEM-BOOK-014-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-014-3",
+      "bookId": "book-014",
+      "barcode": "GHRCEM-BOOK-014-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-014-4",
+      "bookId": "book-014",
+      "barcode": "GHRCEM-BOOK-014-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-015-1",
+      "bookId": "book-015",
+      "barcode": "GHRCEM-BOOK-015-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-015-2",
+      "bookId": "book-015",
+      "barcode": "GHRCEM-BOOK-015-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-016-1",
+      "bookId": "book-016",
+      "barcode": "GHRCEM-BOOK-016-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-016-2",
+      "bookId": "book-016",
+      "barcode": "GHRCEM-BOOK-016-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-016-3",
+      "bookId": "book-016",
+      "barcode": "GHRCEM-BOOK-016-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-016-4",
+      "bookId": "book-016",
+      "barcode": "GHRCEM-BOOK-016-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-017-1",
+      "bookId": "book-017",
+      "barcode": "GHRCEM-BOOK-017-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-017-2",
+      "bookId": "book-017",
+      "barcode": "GHRCEM-BOOK-017-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-018-1",
+      "bookId": "book-018",
+      "barcode": "GHRCEM-BOOK-018-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-018-2",
+      "bookId": "book-018",
+      "barcode": "GHRCEM-BOOK-018-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-018-3",
+      "bookId": "book-018",
+      "barcode": "GHRCEM-BOOK-018-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-018-4",
+      "bookId": "book-018",
+      "barcode": "GHRCEM-BOOK-018-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-019-1",
+      "bookId": "book-019",
+      "barcode": "GHRCEM-BOOK-019-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-019-2",
+      "bookId": "book-019",
+      "barcode": "GHRCEM-BOOK-019-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-020-1",
+      "bookId": "book-020",
+      "barcode": "GHRCEM-BOOK-020-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-020-2",
+      "bookId": "book-020",
+      "barcode": "GHRCEM-BOOK-020-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-020-3",
+      "bookId": "book-020",
+      "barcode": "GHRCEM-BOOK-020-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-020-4",
+      "bookId": "book-020",
+      "barcode": "GHRCEM-BOOK-020-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-021-1",
+      "bookId": "book-021",
+      "barcode": "GHRCEM-BOOK-021-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-021-2",
+      "bookId": "book-021",
+      "barcode": "GHRCEM-BOOK-021-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-022-1",
+      "bookId": "book-022",
+      "barcode": "GHRCEM-BOOK-022-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-022-2",
+      "bookId": "book-022",
+      "barcode": "GHRCEM-BOOK-022-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-022-3",
+      "bookId": "book-022",
+      "barcode": "GHRCEM-BOOK-022-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-022-4",
+      "bookId": "book-022",
+      "barcode": "GHRCEM-BOOK-022-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-023-1",
+      "bookId": "book-023",
+      "barcode": "GHRCEM-BOOK-023-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-023-2",
+      "bookId": "book-023",
+      "barcode": "GHRCEM-BOOK-023-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-024-1",
+      "bookId": "book-024",
+      "barcode": "GHRCEM-BOOK-024-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-024-2",
+      "bookId": "book-024",
+      "barcode": "GHRCEM-BOOK-024-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-024-3",
+      "bookId": "book-024",
+      "barcode": "GHRCEM-BOOK-024-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-024-4",
+      "bookId": "book-024",
+      "barcode": "GHRCEM-BOOK-024-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-025-1",
+      "bookId": "book-025",
+      "barcode": "GHRCEM-BOOK-025-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-025-2",
+      "bookId": "book-025",
+      "barcode": "GHRCEM-BOOK-025-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-026-1",
+      "bookId": "book-026",
+      "barcode": "GHRCEM-BOOK-026-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-026-2",
+      "bookId": "book-026",
+      "barcode": "GHRCEM-BOOK-026-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-026-3",
+      "bookId": "book-026",
+      "barcode": "GHRCEM-BOOK-026-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-026-4",
+      "bookId": "book-026",
+      "barcode": "GHRCEM-BOOK-026-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-027-1",
+      "bookId": "book-027",
+      "barcode": "GHRCEM-BOOK-027-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-027-2",
+      "bookId": "book-027",
+      "barcode": "GHRCEM-BOOK-027-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-028-1",
+      "bookId": "book-028",
+      "barcode": "GHRCEM-BOOK-028-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-028-2",
+      "bookId": "book-028",
+      "barcode": "GHRCEM-BOOK-028-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-028-3",
+      "bookId": "book-028",
+      "barcode": "GHRCEM-BOOK-028-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-028-4",
+      "bookId": "book-028",
+      "barcode": "GHRCEM-BOOK-028-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-029-1",
+      "bookId": "book-029",
+      "barcode": "GHRCEM-BOOK-029-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-029-2",
+      "bookId": "book-029",
+      "barcode": "GHRCEM-BOOK-029-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-030-1",
+      "bookId": "book-030",
+      "barcode": "GHRCEM-BOOK-030-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-030-2",
+      "bookId": "book-030",
+      "barcode": "GHRCEM-BOOK-030-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-030-3",
+      "bookId": "book-030",
+      "barcode": "GHRCEM-BOOK-030-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-030-4",
+      "bookId": "book-030",
+      "barcode": "GHRCEM-BOOK-030-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-031-1",
+      "bookId": "book-031",
+      "barcode": "GHRCEM-BOOK-031-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-031-2",
+      "bookId": "book-031",
+      "barcode": "GHRCEM-BOOK-031-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-032-1",
+      "bookId": "book-032",
+      "barcode": "GHRCEM-BOOK-032-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-032-2",
+      "bookId": "book-032",
+      "barcode": "GHRCEM-BOOK-032-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-032-3",
+      "bookId": "book-032",
+      "barcode": "GHRCEM-BOOK-032-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-032-4",
+      "bookId": "book-032",
+      "barcode": "GHRCEM-BOOK-032-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-033-1",
+      "bookId": "book-033",
+      "barcode": "GHRCEM-BOOK-033-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-033-2",
+      "bookId": "book-033",
+      "barcode": "GHRCEM-BOOK-033-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-034-1",
+      "bookId": "book-034",
+      "barcode": "GHRCEM-BOOK-034-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-034-2",
+      "bookId": "book-034",
+      "barcode": "GHRCEM-BOOK-034-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-034-3",
+      "bookId": "book-034",
+      "barcode": "GHRCEM-BOOK-034-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-034-4",
+      "bookId": "book-034",
+      "barcode": "GHRCEM-BOOK-034-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-035-1",
+      "bookId": "book-035",
+      "barcode": "GHRCEM-BOOK-035-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-035-2",
+      "bookId": "book-035",
+      "barcode": "GHRCEM-BOOK-035-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-036-1",
+      "bookId": "book-036",
+      "barcode": "GHRCEM-BOOK-036-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-036-2",
+      "bookId": "book-036",
+      "barcode": "GHRCEM-BOOK-036-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-036-3",
+      "bookId": "book-036",
+      "barcode": "GHRCEM-BOOK-036-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-036-4",
+      "bookId": "book-036",
+      "barcode": "GHRCEM-BOOK-036-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-037-1",
+      "bookId": "book-037",
+      "barcode": "GHRCEM-BOOK-037-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-037-2",
+      "bookId": "book-037",
+      "barcode": "GHRCEM-BOOK-037-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-038-1",
+      "bookId": "book-038",
+      "barcode": "GHRCEM-BOOK-038-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-038-2",
+      "bookId": "book-038",
+      "barcode": "GHRCEM-BOOK-038-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-038-3",
+      "bookId": "book-038",
+      "barcode": "GHRCEM-BOOK-038-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-038-4",
+      "bookId": "book-038",
+      "barcode": "GHRCEM-BOOK-038-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-039-1",
+      "bookId": "book-039",
+      "barcode": "GHRCEM-BOOK-039-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-039-2",
+      "bookId": "book-039",
+      "barcode": "GHRCEM-BOOK-039-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-040-1",
+      "bookId": "book-040",
+      "barcode": "GHRCEM-BOOK-040-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-040-2",
+      "bookId": "book-040",
+      "barcode": "GHRCEM-BOOK-040-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-040-3",
+      "bookId": "book-040",
+      "barcode": "GHRCEM-BOOK-040-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-040-4",
+      "bookId": "book-040",
+      "barcode": "GHRCEM-BOOK-040-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-041-1",
+      "bookId": "book-041",
+      "barcode": "GHRCEM-BOOK-041-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-041-2",
+      "bookId": "book-041",
+      "barcode": "GHRCEM-BOOK-041-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-042-1",
+      "bookId": "book-042",
+      "barcode": "GHRCEM-BOOK-042-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-042-2",
+      "bookId": "book-042",
+      "barcode": "GHRCEM-BOOK-042-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-042-3",
+      "bookId": "book-042",
+      "barcode": "GHRCEM-BOOK-042-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-042-4",
+      "bookId": "book-042",
+      "barcode": "GHRCEM-BOOK-042-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-043-1",
+      "bookId": "book-043",
+      "barcode": "GHRCEM-BOOK-043-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-043-2",
+      "bookId": "book-043",
+      "barcode": "GHRCEM-BOOK-043-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-044-1",
+      "bookId": "book-044",
+      "barcode": "GHRCEM-BOOK-044-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-044-2",
+      "bookId": "book-044",
+      "barcode": "GHRCEM-BOOK-044-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-044-3",
+      "bookId": "book-044",
+      "barcode": "GHRCEM-BOOK-044-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-044-4",
+      "bookId": "book-044",
+      "barcode": "GHRCEM-BOOK-044-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-045-1",
+      "bookId": "book-045",
+      "barcode": "GHRCEM-BOOK-045-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-045-2",
+      "bookId": "book-045",
+      "barcode": "GHRCEM-BOOK-045-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-046-1",
+      "bookId": "book-046",
+      "barcode": "GHRCEM-BOOK-046-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-046-2",
+      "bookId": "book-046",
+      "barcode": "GHRCEM-BOOK-046-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-046-3",
+      "bookId": "book-046",
+      "barcode": "GHRCEM-BOOK-046-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-046-4",
+      "bookId": "book-046",
+      "barcode": "GHRCEM-BOOK-046-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-047-1",
+      "bookId": "book-047",
+      "barcode": "GHRCEM-BOOK-047-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-047-2",
+      "bookId": "book-047",
+      "barcode": "GHRCEM-BOOK-047-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-048-1",
+      "bookId": "book-048",
+      "barcode": "GHRCEM-BOOK-048-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-048-2",
+      "bookId": "book-048",
+      "barcode": "GHRCEM-BOOK-048-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-048-3",
+      "bookId": "book-048",
+      "barcode": "GHRCEM-BOOK-048-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-048-4",
+      "bookId": "book-048",
+      "barcode": "GHRCEM-BOOK-048-04",
+      "copyNumber": 4,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-049-1",
+      "bookId": "book-049",
+      "barcode": "GHRCEM-BOOK-049-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-049-2",
+      "bookId": "book-049",
+      "barcode": "GHRCEM-BOOK-049-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-050-1",
+      "bookId": "book-050",
+      "barcode": "GHRCEM-BOOK-050-01",
+      "copyNumber": 1,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-050-2",
+      "bookId": "book-050",
+      "barcode": "GHRCEM-BOOK-050-02",
+      "copyNumber": 2,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-050-3",
+      "bookId": "book-050",
+      "barcode": "GHRCEM-BOOK-050-03",
+      "copyNumber": 3,
+      "status": "available"
+    },
+    {
+      "id": "copy-book-050-4",
+      "bookId": "book-050",
+      "barcode": "GHRCEM-BOOK-050-04",
+      "copyNumber": 4,
+      "status": "available"
+    }
+  ],
+  "members": [
+    {
+      "id": "25CO64",
+      "rollNo": "25CO64",
+      "registrationNumber": "25ACOE1101100",
+      "name": "Hiya Shaikh",
+      "email": "hiyashaikh3@gmail.com",
+      "phone": "+91 93097***78",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-09-10",
+      "expiryDate": "2029-05-31",
+      "department": "Computer Engineering"
+    },
+    {
+      "id": "FAC-01",
+      "name": "Dr. Sarita Patil",
+      "email": "sarita.patil@ghrcem.raisoni.net",
+      "phone": "+91 98220 11201",
+      "membershipType": "Faculty",
+      "membershipStatus": "Active",
+      "registrationDate": "2021-06-15",
+      "expiryDate": "2030-12-31",
+      "department": "Computer Engineering"
+    },
+    {
+      "id": "FAC-02",
+      "name": "Narsing Kadam",
+      "email": "narsing.kadam@ghrcem.raisoni.net",
+      "phone": "+91 98220 11202",
+      "membershipType": "Faculty",
+      "membershipStatus": "Active",
+      "registrationDate": "2020-08-01",
+      "expiryDate": "2030-12-31",
+      "department": "Information Technology"
+    },
+    {
+      "id": "FAC-03",
+      "name": "Sadashiv Badger",
+      "email": "sadashiv.badger@ghrcem.raisoni.net",
+      "phone": "+91 98220 11203",
+      "membershipType": "Faculty",
+      "membershipStatus": "Active",
+      "registrationDate": "2019-07-10",
+      "expiryDate": "2030-12-31",
+      "department": "Mechanical Engineering"
+    },
+    {
+      "id": "FAC-04",
+      "name": "Prajakta Borude",
+      "email": "prajakta.borude@ghrcem.raisoni.net",
+      "phone": "+91 98220 11204",
+      "membershipType": "Faculty",
+      "membershipStatus": "Active",
+      "registrationDate": "2022-01-18",
+      "expiryDate": "2030-12-31",
+      "department": "Electronics & Telecommunication"
+    },
+    {
+      "id": "25CO01",
+      "rollNo": "25CO01",
+      "name": "Aarav Sharma",
+      "email": "aarav.sharma@ghrcem.raisoni.net",
+      "phone": "+91 98230 44001",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-20",
+      "expiryDate": "2029-05-31",
+      "department": "Computer Engineering"
+    },
+    {
+      "id": "25CO02",
+      "rollNo": "25CO02",
+      "name": "Ananya Deshmukh",
+      "email": "ananya.deshmukh@ghrcem.raisoni.net",
+      "phone": "+91 98230 44002",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-20",
+      "expiryDate": "2029-05-31",
+      "department": "Computer Engineering"
+    },
+    {
+      "id": "25CO03",
+      "rollNo": "25CO03",
+      "name": "Rohan Kulkarni",
+      "email": "rohan.kulkarni@ghrcem.raisoni.net",
+      "phone": "+91 98230 44003",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-21",
+      "expiryDate": "2029-05-31",
+      "department": "Computer Engineering"
+    },
+    {
+      "id": "25IT10",
+      "rollNo": "25IT10",
+      "name": "Snehal Joshi",
+      "email": "snehal.joshi@ghrcem.raisoni.net",
+      "phone": "+91 98230 44004",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-22",
+      "expiryDate": "2029-05-31",
+      "department": "Information Technology"
+    },
+    {
+      "id": "25IT11",
+      "rollNo": "25IT11",
+      "name": "Aditya Shinde",
+      "email": "aditya.shinde@ghrcem.raisoni.net",
+      "phone": "+91 98230 44005",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-22",
+      "expiryDate": "2029-05-31",
+      "department": "Information Technology"
+    },
+    {
+      "id": "25ME05",
+      "rollNo": "25ME05",
+      "name": "Pranav Gaikwad",
+      "email": "pranav.gaikwad@ghrcem.raisoni.net",
+      "phone": "+91 98230 44006",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-23",
+      "expiryDate": "2029-05-31",
+      "department": "Mechanical Engineering"
+    },
+    {
+      "id": "25ENTC08",
+      "rollNo": "25ENTC08",
+      "name": "Tanvi Bhosale",
+      "email": "tanvi.bhosale@ghrcem.raisoni.net",
+      "phone": "+91 98230 44007",
+      "membershipType": "Student",
+      "membershipStatus": "Active",
+      "registrationDate": "2025-08-24",
+      "expiryDate": "2029-05-31",
+      "department": "Electronics & Telecommunication"
+    },
+    {
+      "id": "STAFF-01",
+      "name": "Rameshwar Pawar",
+      "email": "rameshwar.pawar@ghrcem.raisoni.net",
+      "phone": "+91 98220 55001",
+      "membershipType": "Staff",
+      "membershipStatus": "Active",
+      "registrationDate": "2018-03-01",
+      "expiryDate": "2032-12-31",
+      "department": "Central Administration"
+    }
+  ],
+  "loans": [
+    {
+      "id": "loan-001",
+      "memberId": "25CO64",
+      "copyId": "copy-book-001-1",
+      "issueDate": "2026-10-07",
+      "dueDate": "2026-10-28",
+      "returnDate": null,
+      "renewalCount": 0,
+      "status": "active"
+    },
+    {
+      "id": "loan-002",
+      "memberId": "FAC-01",
+      "copyId": "copy-book-002-2",
+      "issueDate": "2026-10-02",
+      "dueDate": "2026-10-23",
+      "returnDate": null,
+      "renewalCount": 1,
+      "status": "active"
+    },
+    {
+      "id": "loan-003",
+      "memberId": "25CO01",
+      "copyId": "copy-book-003-1",
+      "issueDate": "2026-09-14",
+      "dueDate": "2026-10-05",
+      "returnDate": null,
+      "renewalCount": 0,
+      "status": "active"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "res-001",
+      "memberId": "25CO64",
+      "bookId": "book-002",
+      "reservationDate": "2026-10-10",
+      "holdUntil": "2026-10-17",
+      "status": "ready"
+    },
+    {
+      "id": "res-002",
+      "memberId": "FAC-02",
+      "bookId": "book-003",
+      "reservationDate": "2026-10-11",
+      "holdUntil": null,
+      "status": "pending"
+    }
+  ],
+  "fines": [
+    {
+      "id": "fine-001",
+      "loanId": "loan-003",
+      "memberId": "25CO01",
+      "amount": 35,
+      "status": "unpaid",
+      "reason": "7 days overdue (₹5/day)",
+      "paidAt": null
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-01",
+      "memberId": "25CO64",
+      "title": "Reservation ready for collection",
+      "message": "Designing Data-Intensive Applications is held for you at the central library desk.",
+      "type": "reservation",
+      "createdAt": "2026-10-11",
+      "readAt": null
+    },
+    {
+      "id": "notif-02",
+      "memberId": "25CO64",
+      "title": "Book issue confirmed",
+      "message": "The Pragmatic Programmer has been checked out to you.",
+      "type": "returned",
+      "createdAt": "2026-10-07",
+      "readAt": "2026-10-08"
+    },
+    {
+      "id": "notif-03",
+      "memberId": null,
+      "title": "Central Library Hours",
+      "message": "Central Digital Library is open from 8:00 AM to 8:00 PM for the upcoming examination cycle.",
+      "type": "announcement",
+      "createdAt": "2026-10-10",
+      "readAt": null
+    },
+    {
+      "id": "notif-04",
+      "memberId": "25CO01",
+      "title": "Overdue Book Reminder",
+      "message": "Clean Code is overdue. Please return it to avoid daily fine accumulation.",
+      "type": "overdue",
+      "createdAt": "2026-10-09",
+      "readAt": null
+    }
+  ],
+  "activity": [
+    {
+      "id": "act-01",
+      "actorId": "mirkword",
+      "action": "issued The Pragmatic Programmer to Hiya Shaikh",
+      "entityType": "loan",
+      "entityId": "loan-001",
+      "timestamp": "2026-10-07T16:19:12.274Z"
+    },
+    {
+      "id": "act-02",
+      "actorId": "mirkword",
+      "action": "fulfilled reservation for Designing Data-Intensive Applications",
+      "entityType": "reservation",
+      "entityId": "res-001",
+      "timestamp": "2026-10-10T16:19:12.274Z"
+    },
+    {
+      "id": "act-03",
+      "actorId": "mirkword",
+      "action": "registered faculty Dr. Sarita Patil",
+      "entityType": "member",
+      "entityId": "FAC-01",
+      "timestamp": "2026-09-12T16:19:12.274Z"
+    }
+  ],
+  "settings": {
+    "libraryName": "GH Raisoni College of Engineering and Management",
+    "address": "Wagholi, Pune",
+    "contactEmail": "ghrcemp@gmail.com",
+    "phone": "+91 20 6752 4800",
+    "hours": "Mon–Fri: 8:00 AM–8:00 PM · Sat: 9:00 AM–5:00 PM",
+    "loanDurationDays": 21,
+    "maxActiveLoans": 5,
+    "maxRenewals": 2,
+    "finePerDay": 5,
+    "reservationHoldDays": 3
+  }
+}

@@ -1,0 +1,165 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  code        String   @unique
+  description String
+  books       Book[]
+
+  @@map("categories")
+}
+
+model Book {
+  id              String        @id @default(cuid())
+  title           String
+  author          String
+  isbn            String        @unique
+  publisher       String
+  publicationYear Int
+  categoryId      String
+  category        Category      @relation(fields: [categoryId], references: [id])
+  language        String        @default("English")
+  edition         String        @default("1st edition")
+  pageCount       Int           @default(200)
+  description     String
+  coverUrl        String?
+  shelfLocation   String
+  callNumber      String
+  archivedAt      DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  copies          BookCopy[]
+  reservations    Reservation[]
+
+  @@map("books")
+}
+
+model BookCopy {
+  id         String   @id @default(cuid())
+  bookId     String
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  barcode    String   @unique
+  copyNumber Int
+  status     String   @default("available") // available | loaned | reserved | damaged | lost
+  createdAt  DateTime @default(now())
+  loans      Loan[]
+
+  @@map("book_copies")
+}
+
+model Member {
+  id                 String         @id
+  rollNo             String?
+  registrationNumber String?
+  name               String
+  email              String         @unique
+  phone              String
+  membershipType     String         @default("Student") // Student | Faculty | Staff
+  membershipStatus   String         @default("Active")  // Active | Expired | Suspended
+  registrationDate   String
+  expiryDate         String
+  department         String
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  loans              Loan[]
+  reservations       Reservation[]
+  fines              Fine[]
+  notifications      Notification[]
+
+  @@map("members")
+}
+
+model Loan {
+  id           String    @id @default(cuid())
+  memberId     String
+  member       Member    @relation(fields: [memberId], references: [id])
+  copyId       String
+  copy         BookCopy  @relation(fields: [copyId], references: [id])
+  issueDate    String
+  dueDate      String
+  returnDate   String?
+  renewalCount Int       @default(0)
+  status       String    @default("active") // active | returned | lost
+  createdAt    DateTime  @default(now())
+  fines        Fine[]
+
+  @@map("loans")
+}
+
+model Reservation {
+  id              String   @id @default(cuid())
+  memberId        String
+  member          Member   @relation(fields: [memberId], references: [id])
+  bookId          String
+  book            Book     @relation(fields: [bookId], references: [id])
+  reservationDate String
+  holdUntil       String?
+  status          String   @default("pending") // pending | ready | fulfilled | cancelled
+  createdAt       DateTime @default(now())
+
+  @@map("reservations")
+}
+
+model Fine {
+  id        String   @id @default(cuid())
+  loanId    String
+  loan      Loan     @relation(fields: [loanId], references: [id])
+  memberId  String
+  member    Member   @relation(fields: [memberId], references: [id])
+  amount    Float
+  status    String   @default("unpaid") // unpaid | paid | waived
+  reason    String?
+  paidAt    String?
+  createdAt DateTime @default(now())
+
+  @@map("fines")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  memberId  String?
+  member    Member?  @relation(fields: [memberId], references: [id])
+  title     String
+  message   String
+  type      String   // due | overdue | reservation | returned | announcement
+  createdAt String
+  readAt    String?
+
+  @@map("notifications")
+}
+
+model Activity {
+  id         String   @id @default(cuid())
+  actorId    String
+  action     String
+  entityType String
+  entityId   String
+  timestamp  String
+
+  @@map("activities")
+}
+
+model LibrarySetting {
+  id                  String   @id @default("default")
+  libraryName         String   @default("GH Raisoni College of Engineering and Management")
+  contactEmail        String   @default("ghrcemp@gmail.com")
+  address             String   @default("Wagholi, Pune")
+  phone               String   @default("+91 9309700000")
+  hours               String   @default("Mon-Sat 8:00 AM - 8:00 PM")
+  loanDurationDays    Int      @default(14)
+  maxActiveLoans      Int      @default(5)
+  maxRenewals         Int      @default(2)
+  finePerDay          Float    @default(5.0)
+  reservationHoldDays Int      @default(3)
+  updatedAt           DateTime @updatedAt
+
+  @@map("library_settings")
+}
