@@ -38,5 +38,5 @@ Circulation dates use standard date formats for precise scheduling. Book covers 
 
 ## Credits
 
-Built and maintained by Hiya Shaikh (25 CO64).
+Built and maintained by Hiya Shaikh (25CO64).
 
