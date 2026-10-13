@@ -41,35 +41,6 @@ npm run dev
 
 ---
 
----
-
-## API Endpoints Reference
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/health` | Healthcheck, uptime, and database engine diagnostics |
-| `GET` | `/api/settings/snapshot` | Full system state snapshot for hydration |
-| `GET` | `/api/books` | List books with search, category, and status filters |
-| `POST` | `/api/books` | Create new catalog title with physical copies |
-| `PUT` | `/api/books/:id` | Update book details and metadata |
-| `DELETE` | `/api/books/:id` | Archive catalog title |
-| `POST` | `/api/books/:id/copies` | Add or decommission physical book copies |
-| `GET` | `/api/members` | List members with student/faculty filtering |
-| `POST` | `/api/members` | Register or update member record |
-| `GET` | `/api/circulation/loans` | List active, returned, and overdue loans |
-| `POST` | `/api/circulation/loans/issue` | Issue copy to member with loan policy validation |
-| `POST` | `/api/circulation/loans/:id/return` | Check-in loan with condition assessment & fines |
-| `POST` | `/api/circulation/loans/:id/renew` | Renew loan within borrowing limits |
-| `GET` | `/api/reservations` | List active FIFO reservation queues |
-| `POST` | `/api/reservations` | Place book reservation |
-| `POST` | `/api/reservations/:id/cancel` | Cancel reservation and reassign hold queue |
-| `GET` | `/api/circulation/fines` | List overdue fines |
-| `POST` | `/api/circulation/fines/:id/pay` | Record fine payment |
-| `POST` | `/api/circulation/fines/:id/waive` | Waive fine with recorded authorization reason |
-| `GET` | `/api/analytics` | Statistical analytics & circulation aggregations |
-
----
-
 ## Portals & Access
 
 - **Librarian Portal** (Head Librarian: Mirkword) — Catalog inventory, physical copy tracking, circulation desk, member management, reservation fulfillment, fine collection, and operational settings.
