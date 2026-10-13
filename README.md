@@ -41,22 +41,6 @@ npm run dev
 
 ---
 
-## Prisma Database Commands
-
-```bash
-# Generate Prisma Client
-npm run prisma:generate
-
-# Push schema directly to PostgreSQL database
-npx prisma db push
-
-# Seed PostgreSQL database with GHRCEM records
-npm run prisma:seed
-
-# Launch interactive Prisma Studio GUI
-npx prisma studio
-```
-
 ---
 
 ## API Endpoints Reference
