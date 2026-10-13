@@ -4,23 +4,6 @@ A high-performance, full-stack digital library management platform built with Re
 
 ---
 
-## Architecture Overview
-
-```mermaid
-graph TD
-    Client["React 18 + TypeScript + Vite (Port 5173)"]
-    Proxy["Vite HTTP Proxy (/api)"]
-    API["Express 5.1 REST API Service (Port 3001)"]
-    Prisma["Prisma ORM (v6.19.3 Client)"]
-    DB[("PostgreSQL Relational Database")]
-    Store[("Resilient Persistent Storage Adapter")]
-
-    Client --> Proxy
-    Proxy --> API
-    API --> Prisma
-    Prisma --> DB
-    API -.-> Store
-```
 
 - **Frontend Client**: React 18, TypeScript, React Router 6, Lucide Icons, Recharts, and Vanilla CSS with light & dark mode tokens.
 - **Backend Service Layer**: Express 5.1 REST API with modular controllers, request logging, and structured error responses.
