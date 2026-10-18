@@ -58,10 +58,3 @@ npm run preview
 
 ---
 
-## Credits & Attribution
-
-**Built and maintained by Hiya Shaikh (25CO64)**  
-Department of Computer Engineering  
-GH Raisoni College of Engineering and Management, Wagholi, Pune
-
-
