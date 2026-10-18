@@ -99,7 +99,6 @@ function AppShell() {
       <div className="workspace-label">{role === 'librarian' ? 'LIBRARY WORKSPACE' : 'MEMBER PORTAL'}</div>
       <nav className="side-nav" aria-label="Main navigation">{nav.map(({ label, to, icon: Icon }) => <NavLink onClick={() => setMobileOpen(false)} className={({ isActive }) => `side-link ${isActive ? 'active' : ''}`} to={to} key={to}><Icon size={18} /><span>{label}</span>{to === '/notifications' && unread > 0 && <em>{unread}</em>}</NavLink>)}</nav>
       <div className="sidebar-bottom"><div className="help-card"><div className="help-symbol">✳</div><div className="brand-text"><strong>Need a hand?</strong><span>We're here to help.</span></div><button title="Open help" onClick={() => window.alert('For assistance, contact ghrcemp@gmail.com.')}>↗</button></div>
-        <div className="sidebar-credit">Built and maintained by Hiya Shaikh (25CO64)</div>
         <div className="sidebar-user"><div className="avatar">{userInitials}</div><div className="brand-text"><strong>{role === 'librarian' ? 'Mirkword' : member?.name}</strong><span>{role === 'librarian' ? 'Head Librarian' : 'Student member'}</span></div><IconButton label="Sign out" onClick={() => setRole(null)}><LogOut size={16} /></IconButton></div></div>
     </aside>
     <div className="main-column">
