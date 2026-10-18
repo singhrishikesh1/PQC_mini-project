@@ -67,7 +67,6 @@ function LoginPage() {
       <div className="portal-access"><button onClick={() => enter('librarian')}><span className="portal-icon"><ShieldCheck size={17} /></span><span><strong>Librarian Portal</strong><small>Manage catalog, circulation & members</small></span><span className="portal-arrow">→</span></button>
         <button onClick={() => enter('student')}><span className="portal-icon"><GraduationCap size={17} /></span><span><strong>Student Portal</strong><small>Access account & reservations</small></span><span className="portal-arrow">→</span></button></div>
       <p className="portal-note">Wagholi, Pune · GHRCEMP Digital Portal</p>
-      <p className="portal-credit">Built and maintained by Hiya Shaikh (25CO64)</p>
     </div>
   </div>
 }
